@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fetchProfile, updateProfile } from "@/api/users";
-import { AvatarField } from "@/components/users/avatar-field";
+import { fetchProfile, updateProfile } from "@/modules/users/api/users";
+import { AvatarField } from "@/modules/users/components/avatar-field";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionCard } from "@/components/shared/section-card";

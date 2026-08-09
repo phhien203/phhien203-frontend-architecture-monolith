@@ -5,7 +5,7 @@ import {
   fetchAccountSettings,
   updateAccount,
   updateAccountSettings,
-} from "@/api/accounts";
+} from "@/modules/users/api/accounts";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";

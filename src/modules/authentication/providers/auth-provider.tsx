@@ -7,7 +7,7 @@ import {
   getViewPermissionForPath,
   ORDERED_APP_PATHS,
   setStoredAuthToken,
-} from "@/lib/auth";
+} from "@/modules/users/lib/auth";
 import type { PermissionKey } from "@/types";
 import { fetchSession, login, logout, switchAccount } from "../api/auth";
 import { AuthContext, type AuthContextValue } from "./use-auth";

@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { navItems } from "@/components/navigation/nav-items";
-import { ROLE_LABELS } from "@/lib/auth";
+import { ROLE_LABELS } from "@/modules/users/lib/auth";
 
 function getPageTitle(pathname: string) {
   if (pathname === "/") return "Dashboard";

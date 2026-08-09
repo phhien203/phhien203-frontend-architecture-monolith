@@ -16,9 +16,9 @@ import NewDiscountPage from "@/routes/discounts/new";
 import DiscountDetailPage from "@/routes/discounts/$discountId";
 import AnalyticsPage from "@/routes/analytics/index";
 import SettingsPage from "@/routes/settings/index";
-import UsersPage from "@/routes/users/index";
-import RolesPermissionsPage from "@/routes/users/roles-permissions";
-import UserDetailPage from "@/routes/users/$userId";
+import UsersPage from "@/modules/users/screens/users/users.index";
+import RolesPermissionsPage from "@/modules/users/screens/users/roles-permissions";
+import UserDetailPage from "@/modules/users/screens/users/users.detail";
 import ProfilePage from "@/routes/profile/index";
 
 export interface RouterContext {

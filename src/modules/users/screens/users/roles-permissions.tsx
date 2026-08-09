@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fetchAccountPermissions, updateAccountPermissions } from "@/api/accounts";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+
 import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { PERMISSION_GROUPS, ROLE_LABELS } from "@/lib/auth";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { AccountPermissionPolicy } from "@/types";
+
+import {
+  fetchAccountPermissions,
+  updateAccountPermissions,
+} from "../../api/accounts";
+import { PERMISSION_GROUPS, ROLE_LABELS } from "../../lib/auth";
 
 export default function RolesPermissionsPage() {
   const { session, hasPermission } = useAuth();
@@ -23,16 +28,20 @@ export default function RolesPermissionsPage() {
     enabled: Boolean(accountId) && canManagePermissions,
   });
 
-  const [permissionForm, setPermissionForm] = useState<AccountPermissionPolicy | null>(null);
+  const [permissionForm, setPermissionForm] =
+    useState<AccountPermissionPolicy | null>(null);
 
   useEffect(() => {
     if (data) setPermissionForm(data);
   }, [data]);
 
   const mutation = useMutation({
-    mutationFn: (payload: Partial<AccountPermissionPolicy>) => updateAccountPermissions(accountId, payload),
+    mutationFn: (payload: Partial<AccountPermissionPolicy>) =>
+      updateAccountPermissions(accountId, payload),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["accounts", accountId, "permissions"] });
+      await queryClient.invalidateQueries({
+        queryKey: ["accounts", accountId, "permissions"],
+      });
       await queryClient.invalidateQueries({ queryKey: ["auth", "session"] });
     },
   });
@@ -70,15 +79,25 @@ export default function RolesPermissionsPage() {
           <CardContent className="space-y-6">
             {PERMISSION_GROUPS.map((group) => (
               <div key={group.title} className="space-y-3">
-                <div className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{group.title}</div>
+                <div className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                  {group.title}
+                </div>
                 <div className="grid gap-3 md:grid-cols-2">
                   {group.items.map((permission) => {
-                    const checked = permissionForm[role].includes(permission.key);
+                    const checked = permissionForm[role].includes(
+                      permission.key,
+                    );
                     return (
-                      <label key={permission.key} className="flex items-start justify-between gap-4 rounded-md border p-3">
+                      <label
+                        key={permission.key}
+                        htmlFor={permission.key}
+                        className="flex items-start justify-between gap-4 rounded-md border p-3"
+                      >
                         <div>
                           <div className="font-medium">{permission.label}</div>
-                          <div className="text-sm text-muted-foreground">{permission.description}</div>
+                          <div className="text-sm text-muted-foreground">
+                            {permission.description}
+                          </div>
                         </div>
                         <Switch
                           disabled={!canManagePermissions}
@@ -88,7 +107,9 @@ export default function RolesPermissionsPage() {
                               if (!current) return current;
                               const nextPermissions = nextChecked
                                 ? [...current[role], permission.key]
-                                : current[role].filter((entry) => entry !== permission.key);
+                                : current[role].filter(
+                                    (entry) => entry !== permission.key,
+                                  );
                               return {
                                 ...current,
                                 [role]: nextPermissions,
@@ -106,7 +127,9 @@ export default function RolesPermissionsPage() {
             <div className="flex justify-end">
               <Button
                 disabled={!canManagePermissions || mutation.isPending}
-                onClick={() => void mutation.mutateAsync({ [role]: permissionForm[role] })}
+                onClick={() =>
+                  void mutation.mutateAsync({ [role]: permissionForm[role] })
+                }
               >
                 {mutation.isPending ? "Saving..." : `Save ${ROLE_LABELS[role]}`}
               </Button>

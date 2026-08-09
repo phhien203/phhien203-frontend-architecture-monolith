@@ -1,4 +1,5 @@
-import { useEffect, useState, type ChangeEvent } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
+
 import { readFileAsDataUrl, uploadAvatar } from "@/api/uploads";
 import { Button } from "@/components/ui/button";
 
@@ -10,7 +11,13 @@ interface AvatarFieldProps {
   onChange: (value: string | null) => void;
 }
 
-export function AvatarField({ avatarUrl, initials, disabled = false, isUploading = false, onChange }: AvatarFieldProps) {
+export function AvatarField({
+  avatarUrl,
+  initials,
+  disabled = false,
+  isUploading = false,
+  onChange,
+}: AvatarFieldProps) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isUploadingLocal, setIsUploadingLocal] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -34,7 +41,9 @@ export function AvatarField({ avatarUrl, initials, disabled = false, isUploading
       const { url } = await uploadAvatar(file);
       onChange(url);
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Avatar upload failed");
+      setErrorMessage(
+        error instanceof Error ? error.message : "Avatar upload failed",
+      );
     } finally {
       setIsUploadingLocal(false);
       event.target.value = "";
@@ -44,7 +53,11 @@ export function AvatarField({ avatarUrl, initials, disabled = false, isUploading
   return (
     <div className="flex items-center gap-4">
       {displayedAvatarUrl ? (
-        <img src={displayedAvatarUrl} alt="User avatar" className="h-20 w-20 rounded-full border object-cover" />
+        <img
+          src={displayedAvatarUrl}
+          alt="User avatar"
+          className="h-20 w-20 rounded-full border object-cover"
+        />
       ) : (
         <div className="flex h-20 w-20 items-center justify-center rounded-full border bg-secondary text-lg font-semibold">
           {initials}
@@ -72,8 +85,12 @@ export function AvatarField({ avatarUrl, initials, disabled = false, isUploading
             Remove avatar
           </Button>
         </div>
-        {uploadInProgress ? <p className="text-sm text-muted-foreground">Uploading avatar...</p> : null}
-        {errorMessage ? <p className="text-sm text-destructive">{errorMessage}</p> : null}
+        {uploadInProgress ? (
+          <p className="text-sm text-muted-foreground">Uploading avatar...</p>
+        ) : null}
+        {errorMessage ? (
+          <p className="text-sm text-destructive">{errorMessage}</p>
+        ) : null}
       </div>
     </div>
   );

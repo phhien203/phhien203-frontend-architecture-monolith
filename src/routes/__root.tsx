@@ -2,7 +2,7 @@ import { Navigate, Outlet, useRouterState } from "@tanstack/react-router";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { AppShell } from "@/components/app-shell/app-shell";
-import { getViewPermissionForPath } from "@/lib/auth";
+import { getViewPermissionForPath } from "@/modules/users/lib/auth";
 
 export function RootComponent() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });

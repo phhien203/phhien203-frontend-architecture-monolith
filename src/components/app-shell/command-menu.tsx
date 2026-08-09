@@ -19,12 +19,12 @@ import {
 import { fetchCustomers } from "@/api/customers";
 import { fetchOrders } from "@/api/orders";
 import { fetchProducts } from "@/api/products";
-import { fetchAccountUsers } from "@/api/accounts";
+import { fetchAccountUsers } from "@/modules/users/api/accounts";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { ROLE_LABELS } from "@/lib/auth";
+import { ROLE_LABELS } from "@/modules/users/lib/auth";
 import { formatCurrency, formatDate, cn } from "@/lib/utils";
 import type { PermissionKey } from "@/types";
 
