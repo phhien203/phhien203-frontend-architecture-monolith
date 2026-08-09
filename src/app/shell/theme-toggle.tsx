@@ -1,13 +1,14 @@
 import { Check, Monitor, Moon, Sun } from "lucide-react";
-import { type Theme } from "@/app/providers/theme-context";
+
+import type { Theme } from "@/app/providers/theme-context";
 import { useTheme } from "@/app/providers/use-theme";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const themeOptions: Array<{ value: Theme; label: string; icon: typeof Sun }> = [
@@ -33,12 +34,21 @@ export function ThemeToggle() {
           const isActive = theme === option.value;
 
           return (
-            <DropdownMenuItem key={option.value} onClick={() => setTheme(option.value)} className="justify-between">
+            <DropdownMenuItem
+              key={option.value}
+              onClick={() => setTheme(option.value)}
+              className="justify-between"
+            >
               <span className="flex items-center gap-2">
                 <Icon className="h-4 w-4 text-muted-foreground" />
                 <span>{option.label}</span>
               </span>
-              <Check className={cn("h-4 w-4", isActive ? "opacity-100" : "opacity-0")} />
+              <Check
+                className={cn(
+                  "h-4 w-4",
+                  isActive ? "opacity-100" : "opacity-0",
+                )}
+              />
             </DropdownMenuItem>
           );
         })}

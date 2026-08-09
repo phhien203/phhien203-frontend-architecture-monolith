@@ -1,7 +1,7 @@
 import { Navigate } from "@tanstack/react-router";
 import { useState } from "react";
 
-import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { ThemeToggle } from "@/app/shell/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";

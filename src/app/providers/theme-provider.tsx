@@ -1,5 +1,11 @@
 import { type PropsWithChildren, useEffect, useMemo, useState } from "react";
-import { ThemeContext, type ResolvedTheme, type Theme, type ThemeContextValue } from "@/app/providers/theme-context";
+
+import {
+  type ResolvedTheme,
+  type Theme,
+  ThemeContext,
+  type ThemeContextValue,
+} from "@/app/providers/theme-context";
 
 const THEME_STORAGE_KEY = "commerceos-theme";
 
@@ -7,12 +13,16 @@ function getStoredTheme(): Theme {
   if (typeof window === "undefined") return "system";
 
   const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
-  return stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+  return stored === "light" || stored === "dark" || stored === "system"
+    ? stored
+    : "system";
 }
 
 function getSystemTheme(): ResolvedTheme {
   if (typeof window === "undefined") return "light";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
 export function ThemeProvider({ children }: PropsWithChildren) {
@@ -26,8 +36,12 @@ export function ThemeProvider({ children }: PropsWithChildren) {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const applyTheme = (nextTheme: Theme) => {
-      const nextResolvedTheme = nextTheme === "system" ? getSystemTheme() : nextTheme;
-      document.documentElement.classList.toggle("dark", nextResolvedTheme === "dark");
+      const nextResolvedTheme =
+        nextTheme === "system" ? getSystemTheme() : nextTheme;
+      document.documentElement.classList.toggle(
+        "dark",
+        nextResolvedTheme === "dark",
+      );
       document.documentElement.style.colorScheme = nextResolvedTheme;
       setResolvedTheme(nextResolvedTheme);
     };
@@ -41,7 +55,8 @@ export function ThemeProvider({ children }: PropsWithChildren) {
     };
 
     mediaQuery.addEventListener("change", handleSystemThemeChange);
-    return () => mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    return () =>
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
   }, [theme]);
 
   const value = useMemo<ThemeContextValue>(
@@ -56,5 +71,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
     [resolvedTheme, theme],
   );
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
 }

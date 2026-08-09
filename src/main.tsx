@@ -1,8 +1,9 @@
+import { RouterProvider } from "@tanstack/react-router";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider } from "@tanstack/react-router";
-import { router } from "@/app/router/router";
+
 import { AppProviders } from "@/app/providers/AppProviders";
+import { router } from "@/app/router/router";
 import "@/styles/globals.css";
 
 async function enableMocking() {

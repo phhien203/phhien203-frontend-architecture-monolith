@@ -1,19 +1,23 @@
-import { type ReactNode, useEffect, useState } from "react";
-import { Command, Menu, Search } from "lucide-react";
 import { useRouterState } from "@tanstack/react-router";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { CommandMenu } from "@/components/app-shell/command-menu";
-import { SidebarNav } from "@/components/navigation/sidebar-nav";
-import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { Command, Menu, Search } from "lucide-react";
+import { type ReactNode, useEffect, useState } from "react";
+
+import { ThemeToggle } from "@/app/shell/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { navItems } from "@/components/navigation/nav-items";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { ROLE_LABELS } from "@/modules/users/lib/auth";
+
+import { CommandMenu } from "./command-menu";
+import { navItems } from "./nav-items";
+import { SidebarNav } from "./sidebar-nav";
 
 function getPageTitle(pathname: string) {
   if (pathname === "/") return "Dashboard";
-  const matched = navItems.find((item) => item.to !== "/" && pathname.startsWith(item.to));
+  const matched = navItems.find(
+    (item) => item.to !== "/" && pathname.startsWith(item.to),
+  );
   return matched?.label ?? "CommerceOS Admin";
 }
 
@@ -22,7 +26,9 @@ interface AppShellProps {
 }
 
 export function AppShell({ children }: AppShellProps) {
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
   const [commandMenuOpen, setCommandMenuOpen] = useState(false);
   const { session, switchAccount } = useAuth();
 
@@ -45,7 +51,7 @@ export function AppShell({ children }: AppShellProps) {
         <aside className="hidden h-full w-72 overflow-y-auto border-r bg-card p-4 lg:block">
           <SidebarNav />
         </aside>
-        <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+        <main className="flex min-h-0 flex-1 flex-col overflow-hidden">
           <header className="sticky top-0 z-30 border-b bg-background/95 backdrop-blur">
             <div className="flex items-center gap-3 px-4 py-3 lg:px-8">
               <Sheet>
@@ -59,8 +65,12 @@ export function AppShell({ children }: AppShellProps) {
                 </SheetContent>
               </Sheet>
               <div className="min-w-0 flex-1">
-                <div className="text-sm text-muted-foreground">CommerceOS Admin</div>
-                <div className="truncate text-lg font-semibold">{getPageTitle(pathname)}</div>
+                <div className="text-sm text-muted-foreground">
+                  CommerceOS Admin
+                </div>
+                <div className="truncate text-lg font-semibold">
+                  {getPageTitle(pathname)}
+                </div>
               </div>
               {session ? (
                 <div className="hidden min-w-[220px] lg:block">
@@ -70,8 +80,12 @@ export function AppShell({ children }: AppShellProps) {
                     aria-label="Active account"
                   >
                     {session.memberships.map((membership) => (
-                      <option key={membership.account.id} value={membership.account.id}>
-                        {membership.account.name} · {ROLE_LABELS[membership.role]}
+                      <option
+                        key={membership.account.id}
+                        value={membership.account.id}
+                      >
+                        {membership.account.name} ·{" "}
+                        {ROLE_LABELS[membership.role]}
                       </option>
                     ))}
                   </Select>
@@ -86,7 +100,9 @@ export function AppShell({ children }: AppShellProps) {
               >
                 <span className="flex min-w-0 items-center gap-2 text-muted-foreground">
                   <Search className="h-4 w-4" />
-                  <span className="truncate">Search, jump, or run a command...</span>
+                  <span className="truncate">
+                    Search, jump, or run a command...
+                  </span>
                 </span>
                 <span className="flex items-center gap-1 rounded-md border bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">
                   <Command className="h-3 w-3" />
@@ -98,7 +114,7 @@ export function AppShell({ children }: AppShellProps) {
           <main className="min-h-0 flex-1 overflow-y-auto px-4 py-6 lg:px-8">
             {children}
           </main>
-        </div>
+        </main>
       </div>
     </div>
   );

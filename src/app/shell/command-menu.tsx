@@ -1,4 +1,3 @@
-import { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
@@ -16,16 +15,18 @@ import {
   Truck,
   Users,
 } from "lucide-react";
-import { fetchCustomers } from "@/modules/customers/api/customers.api";
-import { fetchOrders } from "@/modules/orders/api/orders.api";
-import { fetchProducts } from "@/modules/catalog/api/products.api";
-import { fetchAccountUsers } from "@/modules/users/api/accounts";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { useEffect, useMemo, useRef, useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { cn, formatCurrency, formatDate } from "@/lib/utils";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { fetchProducts } from "@/modules/catalog/api/products.api";
+import { fetchCustomers } from "@/modules/customers/api/customers.api";
+import { fetchOrders } from "@/modules/orders/api/orders.api";
+import { fetchAccountUsers } from "@/modules/users/api/accounts";
 import { ROLE_LABELS } from "@/modules/users/lib/auth";
-import { formatCurrency, formatDate, cn } from "@/lib/utils";
 import type { PermissionKey } from "@/types";
 
 interface CommandMenuProps {
@@ -75,10 +76,15 @@ const settingsSections = [
   },
 ] as const;
 
-function matchesQuery(item: Pick<CommandItem, "label" | "subtitle" | "keywords">, query: string) {
+function matchesQuery(
+  item: Pick<CommandItem, "label" | "subtitle" | "keywords">,
+  query: string,
+) {
   const normalizedQuery = query.trim().toLowerCase();
   if (!normalizedQuery) return true;
-  return `${item.label} ${item.subtitle} ${item.keywords}`.toLowerCase().includes(normalizedQuery);
+  return `${item.label} ${item.subtitle} ${item.keywords}`
+    .toLowerCase()
+    .includes(normalizedQuery);
 }
 
 export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
@@ -109,7 +115,10 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
   const { data: accountUsers = [] } = useQuery({
     queryKey: ["accounts", session?.activeAccount.id, "users"],
     queryFn: () => fetchAccountUsers(session?.activeAccount.id ?? ""),
-    enabled: open && Boolean(session?.activeAccount.id) && hasPermission("settings.users.manage"),
+    enabled:
+      open &&
+      Boolean(session?.activeAccount.id) &&
+      hasPermission("settings.users.manage"),
     staleTime: 60_000,
   });
 
@@ -206,7 +215,8 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
         label: "Go to Settings",
         section: "Navigate",
         subtitle: "Open store configuration and operations settings",
-        keywords: "settings configuration preferences store profile shipping taxes",
+        keywords:
+          "settings configuration preferences store profile shipping taxes",
         icon: Settings,
         permission: "settings.view",
         run: () => navigateAndClose(() => navigate({ to: "/settings" })),
@@ -239,7 +249,8 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
         keywords: "users roles permissions access policy admin user",
         icon: Settings,
         permission: "settings.permissions.manage",
-        run: () => navigateAndClose(() => navigate({ to: "/users/roles-permissions" })),
+        run: () =>
+          navigateAndClose(() => navigate({ to: "/users/roles-permissions" })),
       },
       {
         id: "new-discount",
@@ -259,12 +270,19 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
         keywords: section.keywords,
         icon: section.icon,
         permission:
-          section.id === "store-profile" ? "settings.account_profile.manage" :
-          section.id === "shipping" ? "settings.shipping.manage" :
-          section.id === "taxes" ? "settings.tax.manage" :
-          section.id === "notifications" ? "settings.notifications.manage" :
-          "settings.view",
-        run: () => navigateAndClose(() => navigate({ to: "/settings", hash: section.id })),
+          section.id === "store-profile"
+            ? "settings.account_profile.manage"
+            : section.id === "shipping"
+              ? "settings.shipping.manage"
+              : section.id === "taxes"
+                ? "settings.tax.manage"
+                : section.id === "notifications"
+                  ? "settings.notifications.manage"
+                  : "settings.view",
+        run: () =>
+          navigateAndClose(() =>
+            navigate({ to: "/settings", hash: section.id }),
+          ),
       })),
       ...(session?.memberships.length
         ? session.memberships.map((membership) => ({
@@ -274,7 +292,8 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
             subtitle: ROLE_LABELS[membership.role],
             keywords: `${membership.account.name} account switch tenant ${membership.role}`,
             icon: Cog,
-            run: () => navigateAndClose(() => switchAccount(membership.account.id)),
+            run: () =>
+              navigateAndClose(() => switchAccount(membership.account.id)),
           }))
         : []),
     ];
@@ -287,7 +306,13 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
       keywords: `product ${product.name} ${product.sku} ${product.category} ${product.status}`,
       icon: Package,
       permission: "catalog.view",
-      run: () => navigateAndClose(() => navigate({ to: "/catalog/$productId", params: { productId: product.id } })),
+      run: () =>
+        navigateAndClose(() =>
+          navigate({
+            to: "/catalog/$productId",
+            params: { productId: product.id },
+          }),
+        ),
     }));
 
     const orderItems: CommandItem[] = orders.map((order) => ({
@@ -298,7 +323,10 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
       keywords: `order ${order.orderNumber} ${order.customerName} ${order.status} ${order.paymentStatus} ${order.shipment.carrier}`,
       icon: Receipt,
       permission: "orders.view",
-      run: () => navigateAndClose(() => navigate({ to: "/orders/$orderId", params: { orderId: order.id } })),
+      run: () =>
+        navigateAndClose(() =>
+          navigate({ to: "/orders/$orderId", params: { orderId: order.id } }),
+        ),
     }));
 
     const customerItems: CommandItem[] = customers.map((customer) => ({
@@ -309,7 +337,13 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
       keywords: `customer ${customer.name} ${customer.email} ${customer.segment} ${customer.tags.join(" ")}`,
       icon: Users,
       permission: "customers.view",
-      run: () => navigateAndClose(() => navigate({ to: "/customers/$customerId", params: { customerId: customer.id } })),
+      run: () =>
+        navigateAndClose(() =>
+          navigate({
+            to: "/customers/$customerId",
+            params: { customerId: customer.id },
+          }),
+        ),
     }));
 
     const userItems: CommandItem[] = accountUsers.map((user) => ({
@@ -320,7 +354,10 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
       keywords: `user ${user.name} ${user.email} ${user.title} ${user.role} team member account`,
       icon: Users,
       permission: "settings.users.manage",
-      run: () => navigateAndClose(() => navigate({ to: "/users/$userId", params: { userId: user.userId } })),
+      run: () =>
+        navigateAndClose(() =>
+          navigate({ to: "/users/$userId", params: { userId: user.userId } }),
+        ),
     }));
 
     const filterItems = (itemsToFilter: CommandItem[]) =>
@@ -329,9 +366,15 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
         .filter((item) => matchesQuery(item, query));
 
     const filteredBaseItems = filterItems(baseItems);
-    const filteredProductItems = filterItems(productItems).slice(0, query ? 6 : 4);
+    const filteredProductItems = filterItems(productItems).slice(
+      0,
+      query ? 6 : 4,
+    );
     const filteredOrderItems = filterItems(orderItems).slice(0, query ? 6 : 4);
-    const filteredCustomerItems = filterItems(customerItems).slice(0, query ? 6 : 4);
+    const filteredCustomerItems = filterItems(customerItems).slice(
+      0,
+      query ? 6 : 4,
+    );
     const filteredUserItems = filterItems(userItems).slice(0, query ? 6 : 4);
 
     return [
@@ -341,7 +384,18 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
       ...filteredCustomerItems,
       ...filteredUserItems,
     ];
-  }, [accountUsers, customers, hasPermission, navigate, onOpenChange, orders, products, query, session?.memberships, switchAccount]);
+  }, [
+    accountUsers,
+    customers,
+    hasPermission,
+    navigate,
+    onOpenChange,
+    orders,
+    products,
+    query,
+    session?.memberships,
+    switchAccount,
+  ]);
 
   useEffect(() => {
     if (!items.length) {
@@ -378,7 +432,9 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
               onKeyDown={(event) => {
                 if (event.key === "ArrowDown") {
                   event.preventDefault();
-                  setActiveIndex((current) => Math.min(current + 1, items.length - 1));
+                  setActiveIndex((current) =>
+                    Math.min(current + 1, items.length - 1),
+                  );
                 }
                 if (event.key === "ArrowUp") {
                   event.preventDefault();
@@ -393,8 +449,12 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
               className="h-11 border-0 pl-10 pr-24 text-base shadow-none focus-visible:ring-0"
             />
             <div className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 items-center gap-1 md:flex">
-              <span className="rounded border bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">↑↓</span>
-              <span className="rounded border bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">↵</span>
+              <span className="rounded border bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">
+                ↑↓
+              </span>
+              <span className="rounded border bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">
+                ↵
+              </span>
             </div>
           </div>
         </div>
@@ -408,7 +468,9 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
                 </div>
                 <div className="space-y-1">
                   {sectionItems.map((item) => {
-                    const itemIndex = items.findIndex((entry) => entry.id === item.id);
+                    const itemIndex = items.findIndex(
+                      (entry) => entry.id === item.id,
+                    );
                     const Icon = item.icon;
                     return (
                       <Button
@@ -419,15 +481,20 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
                         onClick={() => void handleSelect(item)}
                         className={cn(
                           "h-auto w-full justify-start rounded-lg px-3 py-3 text-left",
-                          itemIndex === activeIndex && "bg-accent text-accent-foreground",
+                          itemIndex === activeIndex &&
+                            "bg-accent text-accent-foreground",
                         )}
                       >
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border bg-background">
                           <Icon className="h-4 w-4" />
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="block truncate text-sm font-medium">{item.label}</span>
-                          <span className="block truncate text-xs text-muted-foreground">{item.subtitle}</span>
+                          <span className="block truncate text-sm font-medium">
+                            {item.label}
+                          </span>
+                          <span className="block truncate text-xs text-muted-foreground">
+                            {item.subtitle}
+                          </span>
                         </span>
                       </Button>
                     );
@@ -438,7 +505,10 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
           ) : (
             <div className="px-4 py-10 text-center">
               <div className="text-sm font-medium">No matching commands</div>
-              <div className="mt-1 text-sm text-muted-foreground">Try a product name, order number, customer email, or a setting like shipping.</div>
+              <div className="mt-1 text-sm text-muted-foreground">
+                Try a product name, order number, customer email, or a setting
+                like shipping.
+              </div>
             </div>
           )}
         </div>

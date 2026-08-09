@@ -1,12 +1,16 @@
 import { Navigate, Outlet, useRouterState } from "@tanstack/react-router";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
+
+import { AppShell } from "@/app/shell/app-shell";
 import { LoadingState } from "@/components/feedback/loading-state";
-import { AppShell } from "@/components/app-shell/app-shell";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { getViewPermissionForPath } from "@/modules/users/lib/auth";
 
 export function RootComponent() {
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const { isLoading, isAuthenticated, hasPermission, getFallbackPath } = useAuth();
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+  const { isLoading, isAuthenticated, hasPermission, getFallbackPath } =
+    useAuth();
 
   if (isLoading) {
     return <LoadingState label="Loading account session..." />;

@@ -5,6 +5,7 @@ import {
   createRouter,
 } from "@tanstack/react-router";
 
+import { NotFoundComponent, RootComponent } from "@/app/router/root";
 import AnalyticsPage from "@/modules/analytics/screens/analytics.index";
 import LoginPage from "@/modules/authentication/screens/login/login";
 import ProductDetailPage from "@/modules/catalog/screens/catalog.detail";
@@ -23,7 +24,6 @@ import SettingsPage from "@/modules/settings/screens/settings.index";
 import RolesPermissionsPage from "@/modules/users/screens/users/roles-permissions";
 import UserDetailPage from "@/modules/users/screens/users/users.detail";
 import UsersPage from "@/modules/users/screens/users/users.index";
-import { NotFoundComponent, RootComponent } from "@/routes/__root";
 import ProfilePage from "@/routes/profile/index";
 
 export interface RouterContext {
