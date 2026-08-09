@@ -1,18 +1,48 @@
-import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
 import { AlertTriangle, DollarSign, ShoppingCart, Users } from "lucide-react";
-import { Area, Bar, BarChart, CartesianGrid, Cell, ComposedChart, LabelList, Line, XAxis, YAxis } from "recharts";
-import { fetchDashboardSummary } from "@/api/dashboard";
+import {
+  Area,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  ComposedChart,
+  LabelList,
+  Line,
+  XAxis,
+  YAxis,
+} from "recharts";
+
 import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";
 import { StatCard } from "@/components/shared/stat-card";
 import { StatusBadge } from "@/components/shared/status-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { formatCurrency, formatDate, formatNumber } from "@/lib/utils";
 
-const SEGMENT_COLORS = ["hsl(217 91% 60%)", "hsl(173 58% 39%)", "hsl(38 92% 50%)", "hsl(262 83% 58%)", "hsl(8 84% 60%)"];
+import { fetchDashboardSummary } from "../../api/dashboard.api";
+
+const SEGMENT_COLORS = [
+  "hsl(217 91% 60%)",
+  "hsl(173 58% 39%)",
+  "hsl(38 92% 50%)",
+  "hsl(262 83% 58%)",
+  "hsl(8 84% 60%)",
+];
 
 function formatStatusLabel(value: string) {
   return value
@@ -33,7 +63,10 @@ export default function DashboardPage() {
 
   const recentOrderRevenueTrend = data.recentOrderRevenueTrend.map((item) => ({
     ...item,
-    label: new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(new Date(`${item.label}T00:00:00`)),
+    label: new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+    }).format(new Date(`${item.label}T00:00:00`)),
   }));
 
   const orderDistribution = data.orderDistribution.map((item, index) => ({
@@ -43,18 +76,38 @@ export default function DashboardPage() {
   }));
 
   return (
-    <div className="space-y-6">
+    <section className="space-y-6">
       <PageHeader
         title="Dashboard"
         description="Overview of revenue, order flow, customer activity, and inventory risk."
       />
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard title="Revenue" value={formatCurrency(data.revenue)} detail="Paid orders to date" icon={<DollarSign className="h-4 w-4" />} />
-        <StatCard title="Orders" value={formatNumber(data.orders)} detail="Across all statuses" icon={<ShoppingCart className="h-4 w-4" />} />
-        <StatCard title="Customers" value={formatNumber(data.customers)} detail="Tracked customer records" icon={<Users className="h-4 w-4" />} />
-        <StatCard title="Low Stock" value={formatNumber(data.lowStockItems)} detail="Inventory rows below threshold" icon={<AlertTriangle className="h-4 w-4" />} />
-      </div>
+      <header className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <StatCard
+          title="Revenue"
+          value={formatCurrency(data.revenue)}
+          detail="Paid orders to date"
+          icon={<DollarSign className="h-4 w-4" />}
+        />
+        <StatCard
+          title="Orders"
+          value={formatNumber(data.orders)}
+          detail="Across all statuses"
+          icon={<ShoppingCart className="h-4 w-4" />}
+        />
+        <StatCard
+          title="Customers"
+          value={formatNumber(data.customers)}
+          detail="Tracked customer records"
+          icon={<Users className="h-4 w-4" />}
+        />
+        <StatCard
+          title="Low Stock"
+          value={formatNumber(data.lowStockItems)}
+          detail="Inventory rows below threshold"
+          icon={<AlertTriangle className="h-4 w-4" />}
+        />
+      </header>
 
       <div className="grid gap-6 xl:grid-cols-2">
         <Card>
@@ -71,29 +124,81 @@ export default function DashboardPage() {
             >
               <ComposedChart data={recentOrderRevenueTrend}>
                 <defs>
-                  <linearGradient id="dashboard-revenue-fill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="var(--color-revenue)" stopOpacity={0.24} />
-                    <stop offset="95%" stopColor="var(--color-revenue)" stopOpacity={0.02} />
+                  <linearGradient
+                    id="dashboard-revenue-fill"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+                    <stop
+                      offset="5%"
+                      stopColor="var(--color-revenue)"
+                      stopOpacity={0.24}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor="var(--color-revenue)"
+                      stopOpacity={0.02}
+                    />
                   </linearGradient>
                 </defs>
                 <CartesianGrid vertical={false} />
-                <XAxis dataKey="label" tickLine={false} axisLine={false} minTickGap={24} />
-                <YAxis yAxisId="left" tickLine={false} axisLine={false} tickFormatter={(value) => `$${Math.round(Number(value))}`} />
-                <YAxis yAxisId="right" orientation="right" tickLine={false} axisLine={false} allowDecimals={false} />
+                <XAxis
+                  dataKey="label"
+                  tickLine={false}
+                  axisLine={false}
+                  minTickGap={24}
+                />
+                <YAxis
+                  yAxisId="left"
+                  tickLine={false}
+                  axisLine={false}
+                  tickFormatter={(value) => `$${Math.round(Number(value))}`}
+                />
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  tickLine={false}
+                  axisLine={false}
+                  allowDecimals={false}
+                />
                 <ChartTooltip
                   content={
                     <ChartTooltipContent
                       formatter={(value, name) => {
-                        if (name === "revenue") return formatCurrency(Number(value));
+                        if (name === "revenue")
+                          return formatCurrency(Number(value));
                         if (name === "orders") return `${value} orders`;
                         return String(value);
                       }}
                     />
                   }
                 />
-                <Bar yAxisId="right" dataKey="orders" fill="var(--color-orders)" radius={[8, 8, 0, 0]} barSize={16} />
-                <Area yAxisId="left" type="monotone" dataKey="revenue" stroke="var(--color-revenue)" strokeWidth={3} fill="url(#dashboard-revenue-fill)" />
-                <Line yAxisId="left" type="monotone" dataKey="revenue" stroke="var(--color-revenue)" strokeWidth={3} dot={false} activeDot={{ r: 4 }} />
+                <Bar
+                  yAxisId="right"
+                  dataKey="orders"
+                  fill="var(--color-orders)"
+                  radius={[8, 8, 0, 0]}
+                  barSize={16}
+                />
+                <Area
+                  yAxisId="left"
+                  type="monotone"
+                  dataKey="revenue"
+                  stroke="var(--color-revenue)"
+                  strokeWidth={3}
+                  fill="url(#dashboard-revenue-fill)"
+                />
+                <Line
+                  yAxisId="left"
+                  type="monotone"
+                  dataKey="revenue"
+                  stroke="var(--color-revenue)"
+                  strokeWidth={3}
+                  dot={false}
+                  activeDot={{ r: 4 }}
+                />
               </ComposedChart>
             </ChartContainer>
           </CardContent>
@@ -104,12 +209,26 @@ export default function DashboardPage() {
             <CardTitle>Order Distribution</CardTitle>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={{ value: { label: "Orders", color: "hsl(217 91% 60%)" } }} className="h-[220px]">
-              <BarChart data={orderDistribution} layout="vertical" margin={{ left: 8, right: 32 }}>
+            <ChartContainer
+              config={{ value: { label: "Orders", color: "hsl(217 91% 60%)" } }}
+              className="h-55"
+            >
+              <BarChart
+                data={orderDistribution}
+                layout="vertical"
+                margin={{ left: 8, right: 32 }}
+              >
                 <CartesianGrid horizontal={false} />
                 <XAxis type="number" hide />
                 <YAxis type="category" dataKey="label" hide />
-                <ChartTooltip content={<ChartTooltipContent hideLabel formatter={(value) => `${value} orders`} />} />
+                <ChartTooltip
+                  content={
+                    <ChartTooltipContent
+                      hideLabel
+                      formatter={(value) => `${value} orders`}
+                    />
+                  }
+                />
                 <Bar dataKey="value" radius={10}>
                   {orderDistribution.map((entry) => (
                     <Cell key={entry.label} fill={entry.fill} />
@@ -154,16 +273,24 @@ export default function DashboardPage() {
                 {data.recentOrders.map((order) => (
                   <TableRow key={order.id}>
                     <TableCell>
-                      <Link to="/orders/$orderId" params={{ orderId: order.id }} className="font-medium text-primary hover:underline">
+                      <Link
+                        to="/orders/$orderId"
+                        params={{ orderId: order.id }}
+                        className="font-medium text-primary hover:underline"
+                      >
                         {order.orderNumber}
                       </Link>
                     </TableCell>
                     <TableCell>{order.customerName}</TableCell>
-                    <TableCell className="table-cell-muted">{formatDate(order.date)}</TableCell>
+                    <TableCell className="table-cell-muted">
+                      {formatDate(order.date)}
+                    </TableCell>
                     <TableCell>
                       <StatusBadge status={order.status} />
                     </TableCell>
-                    <TableCell className="text-right">{formatCurrency(order.total)}</TableCell>
+                    <TableCell className="text-right">
+                      {formatCurrency(order.total)}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -203,7 +330,9 @@ export default function DashboardPage() {
                         Ends {formatDate(discount.endDate)}
                       </div>
                     </div>
-                    <StatusBadge status={discount.active ? "active" : "inactive"} />
+                    <StatusBadge
+                      status={discount.active ? "active" : "inactive"}
+                    />
                   </div>
                 </div>
               ))}
@@ -220,12 +349,16 @@ export default function DashboardPage() {
           {data.topProducts.map((product) => (
             <div key={product.productId} className="rounded-md border p-4">
               <div className="font-medium">{product.name}</div>
-              <div className="text-sm text-muted-foreground">{product.unitsSold} units sold</div>
-              <div className="mt-3 text-sm font-medium">{formatCurrency(product.revenue)}</div>
+              <div className="text-sm text-muted-foreground">
+                {product.unitsSold} units sold
+              </div>
+              <div className="mt-3 text-sm font-medium">
+                {formatCurrency(product.revenue)}
+              </div>
             </div>
           ))}
         </CardContent>
       </Card>
-    </div>
+    </section>
   );
 }

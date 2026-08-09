@@ -12,6 +12,7 @@ import CatalogPage from "@/modules/catalog/screens/catalog.index";
 import NewProductPage from "@/modules/catalog/screens/catalog.new";
 import CustomerDetailPage from "@/modules/customers/screens/customers.detail";
 import CustomersIndexPage from "@/modules/customers/screens/customers.index";
+import DashboardIndexPage from "@/modules/dashboard/features/dashboard-overview/dashboard-overview";
 import DiscountsDetailPage from "@/modules/discounts/screens/discounts.detail";
 import DiscountsIndexPage from "@/modules/discounts/screens/discounts.index";
 import DiscountsNewPage from "@/modules/discounts/screens/discounts.new";
@@ -23,7 +24,6 @@ import RolesPermissionsPage from "@/modules/users/screens/users/roles-permission
 import UserDetailPage from "@/modules/users/screens/users/users.detail";
 import UsersPage from "@/modules/users/screens/users/users.index";
 import { NotFoundComponent, RootComponent } from "@/routes/__root";
-import DashboardPage from "@/routes/index";
 import ProfilePage from "@/routes/profile/index";
 
 export interface RouterContext {
@@ -38,7 +38,7 @@ const rootRoute = createRootRouteWithContext<RouterContext>()({
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: DashboardPage,
+  component: DashboardIndexPage,
 });
 
 const loginRoute = createRoute({
