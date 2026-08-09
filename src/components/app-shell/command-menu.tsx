@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { fetchCustomers } from "@/api/customers";
 import { fetchOrders } from "@/api/orders";
-import { fetchProducts } from "@/api/products";
+import { fetchProducts } from "@/modules/catalog/api/products.api";
 import { fetchAccountUsers } from "@/modules/users/api/accounts";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { Button } from "@/components/ui/button";

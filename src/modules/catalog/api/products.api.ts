@@ -1,5 +1,5 @@
-import type { Product } from "@/types";
 import { apiClient } from "@/shared/api/client";
+import type { Product } from "@/types";
 
 export function fetchProducts() {
   return apiClient.get<Product[]>("/api/products");

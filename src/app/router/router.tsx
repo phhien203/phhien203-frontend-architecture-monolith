@@ -1,24 +1,25 @@
 import { QueryClient } from "@tanstack/react-query";
 import { createRootRouteWithContext, createRoute, createRouter } from "@tanstack/react-router";
-import { NotFoundComponent, RootComponent } from "@/routes/__root";
-import DashboardPage from "@/routes/index";
-import LoginPage from "@/modules/authentication/screens/login/login";
-import CatalogPage from "@/routes/catalog/index";
-import NewProductPage from "@/routes/catalog/new";
-import ProductDetailPage from "@/routes/catalog/$productId";
-import InventoryPage from "@/routes/inventory/index";
-import OrdersPage from "@/routes/orders/index";
-import OrderDetailPage from "@/routes/orders/$orderId";
-import CustomersPage from "@/routes/customers/index";
-import CustomerDetailPage from "@/routes/customers/$customerId";
-import DiscountsPage from "@/routes/discounts/index";
-import NewDiscountPage from "@/routes/discounts/new";
-import DiscountDetailPage from "@/routes/discounts/$discountId";
+
 import AnalyticsPage from "@/modules/analytics/screens/analytics.index";
+import LoginPage from "@/modules/authentication/screens/login/login";
+import ProductDetailPage from "@/modules/catalog/screens/catalog.detail";
+import CatalogPage from "@/modules/catalog/screens/catalog.index";
+import NewProductPage from "@/modules/catalog/screens/catalog.new";
 import SettingsPage from "@/modules/settings/screens/settings.index";
-import UsersPage from "@/modules/users/screens/users/users.index";
 import RolesPermissionsPage from "@/modules/users/screens/users/roles-permissions";
 import UserDetailPage from "@/modules/users/screens/users/users.detail";
+import UsersPage from "@/modules/users/screens/users/users.index";
+import { NotFoundComponent, RootComponent } from "@/routes/__root";
+import CustomerDetailPage from "@/routes/customers/$customerId";
+import CustomersPage from "@/routes/customers/index";
+import DiscountDetailPage from "@/routes/discounts/$discountId";
+import DiscountsPage from "@/routes/discounts/index";
+import NewDiscountPage from "@/routes/discounts/new";
+import DashboardPage from "@/routes/index";
+import InventoryPage from "@/routes/inventory/index";
+import OrderDetailPage from "@/routes/orders/$orderId";
+import OrdersPage from "@/routes/orders/index";
 import ProfilePage from "@/routes/profile/index";
 
 export interface RouterContext {
