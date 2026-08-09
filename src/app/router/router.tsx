@@ -13,6 +13,7 @@ import NewProductPage from "@/modules/catalog/screens/catalog.new";
 import DiscountsDetailPage from "@/modules/discounts/screens/discounts.detail";
 import DiscountsIndexPage from "@/modules/discounts/screens/discounts.index";
 import DiscountsNewPage from "@/modules/discounts/screens/discounts.new";
+import InventoryIndexPage from "@/modules/inventory/screens/inventory.index";
 import SettingsPage from "@/modules/settings/screens/settings.index";
 import RolesPermissionsPage from "@/modules/users/screens/users/roles-permissions";
 import UserDetailPage from "@/modules/users/screens/users/users.detail";
@@ -21,7 +22,6 @@ import { NotFoundComponent, RootComponent } from "@/routes/__root";
 import CustomerDetailPage from "@/routes/customers/$customerId";
 import CustomersPage from "@/routes/customers/index";
 import DashboardPage from "@/routes/index";
-import InventoryPage from "@/routes/inventory/index";
 import OrderDetailPage from "@/routes/orders/$orderId";
 import OrdersPage from "@/routes/orders/index";
 import ProfilePage from "@/routes/profile/index";
@@ -68,7 +68,7 @@ const newProductRoute = createRoute({
 const inventoryRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/inventory",
-  component: InventoryPage,
+  component: InventoryIndexPage,
 });
 
 const ordersRoute = createRoute({

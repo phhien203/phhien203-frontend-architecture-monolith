@@ -1,5 +1,5 @@
-import type { InventoryItem } from "@/types";
 import { apiClient } from "@/shared/api/client";
+import type { InventoryItem } from "@/types";
 
 export function fetchInventory() {
   return apiClient.get<InventoryItem[]>("/api/inventory");
