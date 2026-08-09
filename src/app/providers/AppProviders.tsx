@@ -1,8 +1,9 @@
-import { PropsWithChildren, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { AuthProvider } from "@/app/providers/auth-provider";
+import { type PropsWithChildren, useState } from "react";
+
 import { ThemeProvider } from "@/app/providers/theme-provider";
+import { AuthProvider } from "@/modules/authentication/providers/auth-provider";
 
 export function AppProviders({ children }: PropsWithChildren) {
   const [queryClient] = useState(

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProduct } from "@/api/products";
-import { useAuth } from "@/app/providers/use-auth";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { ProductImageField } from "@/components/products/product-image-field";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionCard } from "@/components/shared/section-card";

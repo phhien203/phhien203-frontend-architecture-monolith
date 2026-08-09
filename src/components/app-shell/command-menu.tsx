@@ -20,7 +20,7 @@ import { fetchCustomers } from "@/api/customers";
 import { fetchOrders } from "@/api/orders";
 import { fetchProducts } from "@/api/products";
 import { fetchAccountUsers } from "@/api/accounts";
-import { useAuth } from "@/app/providers/use-auth";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";

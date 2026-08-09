@@ -1,6 +1,6 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { CircleUserRound, EllipsisVertical, LogOut, Store } from "lucide-react";
-import { useAuth } from "@/app/providers/use-auth";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { navItems } from "@/components/navigation/nav-items";
 import {
   DropdownMenu,

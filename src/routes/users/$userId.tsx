@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchAccountUser, updateAccountUser } from "@/api/accounts";
-import { useAuth } from "@/app/providers/use-auth";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { AvatarField } from "@/components/users/avatar-field";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";

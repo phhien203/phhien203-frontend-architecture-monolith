@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchProduct, updateProduct } from "@/api/products";
-import { useAuth } from "@/app/providers/use-auth";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { ProductImageField } from "@/components/products/product-image-field";
 import type { Product } from "@/types";
 import { LoadingState } from "@/components/feedback/loading-state";

@@ -1,11 +1,12 @@
-import { useState } from "react";
 import { Navigate } from "@tanstack/react-router";
-import { useAuth } from "@/app/providers/use-auth";
+import { useState } from "react";
+
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAuth } from "../../providers/use-auth";
 
 const DEMO_PASSWORD = "demo123";
 
@@ -27,7 +28,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top,_rgba(43,108,176,0.14),_transparent_40%),linear-gradient(180deg,_rgba(15,23,42,0.03),_transparent)] px-4 py-10 dark:bg-[radial-gradient(circle_at_top,_rgba(96,165,250,0.16),_transparent_36%),linear-gradient(180deg,_rgba(15,23,42,0.44),_rgba(2,6,23,0.88))]">
+    <div className="relative flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top,rgba(43,108,176,0.14),transparent_40%),linear-gradient(180deg,rgba(15,23,42,0.03),transparent)] px-4 py-10 dark:bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.16),transparent_36%),linear-gradient(180deg,rgba(15,23,42,0.44),rgba(2,6,23,0.88))]">
       <div className="absolute right-4 top-4">
         <ThemeToggle />
       </div>

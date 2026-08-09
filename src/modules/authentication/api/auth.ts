@@ -1,5 +1,5 @@
+import { apiClient } from "@/shared/api/client";
 import type { AuthSession } from "@/types";
-import { apiClient } from "@/api/client";
 
 export interface LoginPayload {
   email: string;
@@ -25,4 +25,3 @@ export function logout() {
 export function switchAccount(payload: SwitchAccountPayload) {
   return apiClient.post<AuthSession>("/api/auth/switch-account", payload);
 }
-

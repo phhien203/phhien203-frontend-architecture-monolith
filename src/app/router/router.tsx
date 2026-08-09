@@ -2,7 +2,7 @@ import { QueryClient } from "@tanstack/react-query";
 import { createRootRouteWithContext, createRoute, createRouter } from "@tanstack/react-router";
 import { NotFoundComponent, RootComponent } from "@/routes/__root";
 import DashboardPage from "@/routes/index";
-import LoginPage from "@/routes/login";
+import LoginPage from "@/modules/authentication/screens/login/login";
 import CatalogPage from "@/routes/catalog/index";
 import NewProductPage from "@/routes/catalog/new";
 import ProductDetailPage from "@/routes/catalog/$productId";

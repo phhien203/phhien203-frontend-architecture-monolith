@@ -1,9 +1,16 @@
-import { type PropsWithChildren, useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fetchSession, login, logout, switchAccount } from "@/api/auth";
-import { AuthContext, type AuthContextValue } from "@/app/providers/use-auth";
-import { clearStoredAuthToken, getStoredAuthToken, getViewPermissionForPath, ORDERED_APP_PATHS, setStoredAuthToken } from "@/lib/auth";
+import { type PropsWithChildren, useMemo } from "react";
+
+import {
+  clearStoredAuthToken,
+  getStoredAuthToken,
+  getViewPermissionForPath,
+  ORDERED_APP_PATHS,
+  setStoredAuthToken,
+} from "@/lib/auth";
 import type { PermissionKey } from "@/types";
+import { fetchSession, login, logout, switchAccount } from "../api/auth";
+import { AuthContext, type AuthContextValue } from "./use-auth";
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const queryClient = useQueryClient();
@@ -52,11 +59,16 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
     const hasPermission = (permission: PermissionKey) => {
       if (!session) return false;
-      return session.activeRole === "account_owner" || session.activePermissions.includes(permission);
+      return (
+        session.activeRole === "account_owner" ||
+        session.activePermissions.includes(permission)
+      );
     };
 
     const getFallbackPath = () =>
-      ORDERED_APP_PATHS.find((path) => hasPermission(getViewPermissionForPath(path))) ?? "/";
+      ORDERED_APP_PATHS.find((path) =>
+        hasPermission(getViewPermissionForPath(path)),
+      ) ?? "/";
 
     return {
       session,
@@ -66,11 +78,18 @@ export function AuthProvider({ children }: PropsWithChildren) {
       logout: async () => {
         await logoutMutation.mutateAsync();
       },
-      switchAccount: async (accountId) => switchAccountMutation.mutateAsync({ accountId }),
+      switchAccount: async (accountId) =>
+        switchAccountMutation.mutateAsync({ accountId }),
       hasPermission,
       getFallbackPath,
     };
-  }, [loginMutation, logoutMutation, sessionQuery.data, sessionQuery.isLoading, switchAccountMutation]);
+  }, [
+    loginMutation,
+    logoutMutation,
+    sessionQuery.data,
+    sessionQuery.isLoading,
+    switchAccountMutation,
+  ]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
