@@ -1,11 +1,18 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createRootRouteWithContext, createRoute, createRouter } from "@tanstack/react-router";
+import {
+  createRootRouteWithContext,
+  createRoute,
+  createRouter,
+} from "@tanstack/react-router";
 
 import AnalyticsPage from "@/modules/analytics/screens/analytics.index";
 import LoginPage from "@/modules/authentication/screens/login/login";
 import ProductDetailPage from "@/modules/catalog/screens/catalog.detail";
 import CatalogPage from "@/modules/catalog/screens/catalog.index";
 import NewProductPage from "@/modules/catalog/screens/catalog.new";
+import DiscountsDetailPage from "@/modules/discounts/screens/discounts.detail";
+import DiscountsIndexPage from "@/modules/discounts/screens/discounts.index";
+import DiscountsNewPage from "@/modules/discounts/screens/discounts.new";
 import SettingsPage from "@/modules/settings/screens/settings.index";
 import RolesPermissionsPage from "@/modules/users/screens/users/roles-permissions";
 import UserDetailPage from "@/modules/users/screens/users/users.detail";
@@ -13,9 +20,6 @@ import UsersPage from "@/modules/users/screens/users/users.index";
 import { NotFoundComponent, RootComponent } from "@/routes/__root";
 import CustomerDetailPage from "@/routes/customers/$customerId";
 import CustomersPage from "@/routes/customers/index";
-import DiscountDetailPage from "@/routes/discounts/$discountId";
-import DiscountsPage from "@/routes/discounts/index";
-import NewDiscountPage from "@/routes/discounts/new";
 import DashboardPage from "@/routes/index";
 import InventoryPage from "@/routes/inventory/index";
 import OrderDetailPage from "@/routes/orders/$orderId";
@@ -94,19 +98,19 @@ const customerDetailRoute = createRoute({
 const discountsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/discounts",
-  component: DiscountsPage,
+  component: DiscountsIndexPage,
 });
 
 const newDiscountRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/discounts/new",
-  component: NewDiscountPage,
+  component: DiscountsNewPage,
 });
 
 const discountDetailRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/discounts/$discountId",
-  component: DiscountDetailPage,
+  component: DiscountsDetailPage,
 });
 
 const analyticsRoute = createRoute({

@@ -1,19 +1,21 @@
+import type { DiscountFormValues } from "@/modules/discounts/components/discount-form";
 import type { CustomerSegment, Discount } from "@/types";
-import type { DiscountFormValues } from "@/components/forms/discount-form";
 
-export function normalizeDiscountValues(discount?: Discount): DiscountFormValues {
+export function normalizeDiscountValues(
+  discount?: Discount,
+): DiscountFormValues {
   if (!discount) {
     return {
       code: "",
       type: "percentage",
-    value: 10,
-    startDate: "2026-04-01",
-    endDate: "2026-06-30",
-    active: true,
-    minimumSpend: 0,
-    eligibleSegments: "",
-    eligibleCategories: "",
-  };
+      value: 10,
+      startDate: "2026-04-01",
+      endDate: "2026-06-30",
+      active: true,
+      minimumSpend: 0,
+      eligibleSegments: "",
+      eligibleCategories: "",
+    };
   }
 
   return {

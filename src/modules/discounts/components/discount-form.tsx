@@ -1,11 +1,12 @@
 import { useState } from "react";
-import type { DiscountType } from "@/types";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import type { DiscountType } from "@/types";
 
 export interface DiscountFormValues {
   code: string;
@@ -38,8 +39,15 @@ const defaultValues: DiscountFormValues = {
   eligibleCategories: "",
 };
 
-export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = false }: DiscountFormProps) {
-  const [values, setValues] = useState<DiscountFormValues>(initialValues ?? defaultValues);
+export function DiscountForm({
+  initialValues,
+  onSubmit,
+  submitLabel,
+  disabled = false,
+}: DiscountFormProps) {
+  const [values, setValues] = useState<DiscountFormValues>(
+    initialValues ?? defaultValues,
+  );
   const [isSaving, setIsSaving] = useState(false);
 
   async function handleSubmit(event: React.FormEvent) {
@@ -66,7 +74,12 @@ export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = 
                 id="code"
                 disabled={disabled}
                 value={values.code}
-                onChange={(event) => setValues((current) => ({ ...current, code: event.target.value.toUpperCase() }))}
+                onChange={(event) =>
+                  setValues((current) => ({
+                    ...current,
+                    code: event.target.value.toUpperCase(),
+                  }))
+                }
               />
             </div>
             <div className="space-y-2">
@@ -75,7 +88,12 @@ export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = 
                 id="type"
                 disabled={disabled}
                 value={values.type}
-                onChange={(event) => setValues((current) => ({ ...current, type: event.target.value as DiscountType }))}
+                onChange={(event) =>
+                  setValues((current) => ({
+                    ...current,
+                    type: event.target.value as DiscountType,
+                  }))
+                }
               >
                 <option value="percentage">Percentage</option>
                 <option value="fixed_amount">Fixed amount</option>
@@ -90,7 +108,12 @@ export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = 
                 min="0"
                 disabled={disabled}
                 value={values.value}
-                onChange={(event) => setValues((current) => ({ ...current, value: Number(event.target.value) }))}
+                onChange={(event) =>
+                  setValues((current) => ({
+                    ...current,
+                    value: Number(event.target.value),
+                  }))
+                }
               />
             </div>
             <div className="space-y-2">
@@ -99,7 +122,9 @@ export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = 
                 <Switch
                   checked={values.active}
                   disabled={disabled}
-                  onCheckedChange={(active) => setValues((current) => ({ ...current, active }))}
+                  onCheckedChange={(active) =>
+                    setValues((current) => ({ ...current, active }))
+                  }
                 />
               </div>
             </div>
@@ -110,7 +135,12 @@ export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = 
                 type="date"
                 disabled={disabled}
                 value={values.startDate}
-                onChange={(event) => setValues((current) => ({ ...current, startDate: event.target.value }))}
+                onChange={(event) =>
+                  setValues((current) => ({
+                    ...current,
+                    startDate: event.target.value,
+                  }))
+                }
               />
             </div>
             <div className="space-y-2">
@@ -120,7 +150,12 @@ export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = 
                 type="date"
                 disabled={disabled}
                 value={values.endDate}
-                onChange={(event) => setValues((current) => ({ ...current, endDate: event.target.value }))}
+                onChange={(event) =>
+                  setValues((current) => ({
+                    ...current,
+                    endDate: event.target.value,
+                  }))
+                }
               />
             </div>
             <div className="space-y-2">
@@ -131,7 +166,12 @@ export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = 
                 min="0"
                 disabled={disabled}
                 value={values.minimumSpend}
-                onChange={(event) => setValues((current) => ({ ...current, minimumSpend: Number(event.target.value) }))}
+                onChange={(event) =>
+                  setValues((current) => ({
+                    ...current,
+                    minimumSpend: Number(event.target.value),
+                  }))
+                }
               />
             </div>
             <div className="space-y-2">
@@ -141,7 +181,12 @@ export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = 
                 disabled={disabled}
                 value={values.eligibleSegments}
                 placeholder="VIP, Wholesale"
-                onChange={(event) => setValues((current) => ({ ...current, eligibleSegments: event.target.value }))}
+                onChange={(event) =>
+                  setValues((current) => ({
+                    ...current,
+                    eligibleSegments: event.target.value,
+                  }))
+                }
               />
             </div>
             <div className="space-y-2 md:col-span-2">
@@ -151,7 +196,12 @@ export function DiscountForm({ initialValues, onSubmit, submitLabel, disabled = 
                 disabled={disabled}
                 value={values.eligibleCategories}
                 placeholder="Apparel, Bundles"
-                onChange={(event) => setValues((current) => ({ ...current, eligibleCategories: event.target.value }))}
+                onChange={(event) =>
+                  setValues((current) => ({
+                    ...current,
+                    eligibleCategories: event.target.value,
+                  }))
+                }
               />
             </div>
           </div>

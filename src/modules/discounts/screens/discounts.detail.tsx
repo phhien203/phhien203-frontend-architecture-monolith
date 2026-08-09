@@ -1,15 +1,23 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fetchDiscount, updateDiscount } from "@/api/discounts";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { DiscountForm, type DiscountFormValues } from "@/components/forms/discount-form";
+import { Link, useParams } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+
 import { LoadingState } from "@/components/feedback/loading-state";
 import { ActivityHistoryCard } from "@/components/shared/activity-history-card";
 import { PageHeader } from "@/components/shared/page-header";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
+import {
+  DiscountForm,
+  type DiscountFormValues,
+} from "@/modules/discounts/components/discount-form";
 import type { Discount } from "@/types";
-import { normalizeDiscountValues, serializeDiscountValues } from "@/utils/discounts";
+
+import { fetchDiscount, updateDiscount } from "../api/discounts";
+import {
+  normalizeDiscountValues,
+  serializeDiscountValues,
+} from "../utils/discounts";
 
 export default function DiscountDetailPage() {
   const { hasPermission } = useAuth();
@@ -19,18 +27,25 @@ export default function DiscountDetailPage() {
     queryKey: ["discounts", discountId],
     queryFn: () => fetchDiscount(discountId),
   });
-  const [initialValues, setInitialValues] = useState<DiscountFormValues | undefined>(undefined);
+  const [initialValues, setInitialValues] = useState<
+    DiscountFormValues | undefined
+  >(undefined);
 
   useEffect(() => {
     if (data) setInitialValues(normalizeDiscountValues(data));
   }, [data]);
 
   const mutation = useMutation({
-    mutationFn: (payload: Partial<Discount>) => updateDiscount(discountId, payload),
+    mutationFn: (payload: Partial<Discount>) =>
+      updateDiscount(discountId, payload),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["discounts"] });
-      await queryClient.invalidateQueries({ queryKey: ["discounts", discountId] });
-      await queryClient.invalidateQueries({ queryKey: ["dashboard", "summary"] });
+      await queryClient.invalidateQueries({
+        queryKey: ["discounts", discountId],
+      });
+      await queryClient.invalidateQueries({
+        queryKey: ["dashboard", "summary"],
+      });
     },
   });
 
@@ -39,7 +54,7 @@ export default function DiscountDetailPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <section className="space-y-6">
       <PageHeader
         title={data?.code ?? "Discount"}
         description="Edit placeholder promotion details."
@@ -58,6 +73,6 @@ export default function DiscountDetailPage() {
         }}
       />
       <ActivityHistoryCard entries={data?.activityHistory} />
-    </div>
+    </section>
   );
 }
