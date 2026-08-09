@@ -14,7 +14,7 @@ import CustomerDetailPage from "@/routes/customers/$customerId";
 import DiscountsPage from "@/routes/discounts/index";
 import NewDiscountPage from "@/routes/discounts/new";
 import DiscountDetailPage from "@/routes/discounts/$discountId";
-import AnalyticsPage from "@/routes/analytics/index";
+import AnalyticsPage from "@/modules/analytics/screens/analytics.index";
 import SettingsPage from "@/modules/settings/screens/settings.index";
 import UsersPage from "@/modules/users/screens/users/users.index";
 import RolesPermissionsPage from "@/modules/users/screens/users/roles-permissions";
