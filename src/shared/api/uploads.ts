@@ -33,7 +33,9 @@ export async function uploadImage(file: File) {
   });
 
   if (!response.ok) {
-    const body = (await response.json().catch(() => null)) as { message?: string } | null;
+    const body = (await response.json().catch(() => null)) as {
+      message?: string;
+    } | null;
     throw new Error(body?.message ?? "Avatar upload failed");
   }
 

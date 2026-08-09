@@ -1,6 +1,7 @@
-import { useEffect, useState, type ChangeEvent } from "react";
-import { readFileAsDataUrl, uploadImage } from "@/api/uploads";
+import { type ChangeEvent, useEffect, useState } from "react";
+
 import { Button } from "@/components/ui/button";
+import { readFileAsDataUrl, uploadImage } from "@/shared/api/uploads";
 
 interface ProductImageFieldProps {
   imageUrl?: string | null;
@@ -9,7 +10,12 @@ interface ProductImageFieldProps {
   onChange: (value: string | null) => void;
 }
 
-export function ProductImageField({ imageUrl, productName, disabled = false, onChange }: ProductImageFieldProps) {
+export function ProductImageField({
+  imageUrl,
+  productName,
+  disabled = false,
+  onChange,
+}: ProductImageFieldProps) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -32,7 +38,9 @@ export function ProductImageField({ imageUrl, productName, disabled = false, onC
       const { url } = await uploadImage(file);
       onChange(url);
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Image upload failed");
+      setErrorMessage(
+        error instanceof Error ? error.message : "Image upload failed",
+      );
     } finally {
       setIsUploading(false);
       event.target.value = "";
@@ -44,9 +52,15 @@ export function ProductImageField({ imageUrl, productName, disabled = false, onC
       <div className="flex flex-col gap-4 md:flex-row md:items-start">
         <div className="flex h-48 w-48 items-center justify-center overflow-hidden rounded-xl border bg-secondary">
           {displayedImageUrl ? (
-            <img src={displayedImageUrl} alt={productName} className="h-full w-full object-cover" />
+            <img
+              src={displayedImageUrl}
+              alt={productName}
+              className="h-full w-full object-cover"
+            />
           ) : (
-            <div className="w-full px-4 text-center text-sm text-muted-foreground">No product image uploaded</div>
+            <div className="w-full px-4 text-center text-sm text-muted-foreground">
+              No product image uploaded
+            </div>
           )}
         </div>
         <div className="space-y-2">
@@ -71,8 +85,14 @@ export function ProductImageField({ imageUrl, productName, disabled = false, onC
               Remove image
             </Button>
           </div>
-          {isUploading ? <p className="text-sm text-muted-foreground">Uploading product image...</p> : null}
-          {errorMessage ? <p className="text-sm text-destructive">{errorMessage}</p> : null}
+          {isUploading ? (
+            <p className="text-sm text-muted-foreground">
+              Uploading product image...
+            </p>
+          ) : null}
+          {errorMessage ? (
+            <p className="text-sm text-destructive">{errorMessage}</p>
+          ) : null}
         </div>
       </div>
     </div>
