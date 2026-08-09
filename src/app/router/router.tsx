@@ -14,6 +14,8 @@ import DiscountsDetailPage from "@/modules/discounts/screens/discounts.detail";
 import DiscountsIndexPage from "@/modules/discounts/screens/discounts.index";
 import DiscountsNewPage from "@/modules/discounts/screens/discounts.new";
 import InventoryIndexPage from "@/modules/inventory/screens/inventory.index";
+import OrdersDetailPage from "@/modules/orders/screens/orders.detail";
+import OrdersIndexPage from "@/modules/orders/screens/orders.index";
 import SettingsPage from "@/modules/settings/screens/settings.index";
 import RolesPermissionsPage from "@/modules/users/screens/users/roles-permissions";
 import UserDetailPage from "@/modules/users/screens/users/users.detail";
@@ -22,8 +24,6 @@ import { NotFoundComponent, RootComponent } from "@/routes/__root";
 import CustomerDetailPage from "@/routes/customers/$customerId";
 import CustomersPage from "@/routes/customers/index";
 import DashboardPage from "@/routes/index";
-import OrderDetailPage from "@/routes/orders/$orderId";
-import OrdersPage from "@/routes/orders/index";
 import ProfilePage from "@/routes/profile/index";
 
 export interface RouterContext {
@@ -74,13 +74,13 @@ const inventoryRoute = createRoute({
 const ordersRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/orders",
-  component: OrdersPage,
+  component: OrdersIndexPage,
 });
 
 const orderDetailRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/orders/$orderId",
-  component: OrderDetailPage,
+  component: OrdersDetailPage,
 });
 
 const customersRoute = createRoute({
