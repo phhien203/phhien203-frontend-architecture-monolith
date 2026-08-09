@@ -1,5 +1,5 @@
-import type { Customer, Order } from "@/types";
 import { apiClient } from "@/shared/api/client";
+import type { Customer, Order } from "@/types";
 
 export interface CustomerDetail extends Customer {
   orderHistory: Order[];
@@ -14,5 +14,8 @@ export function fetchCustomer(customerId: string) {
 }
 
 export function updateCustomer(customerId: string, payload: Partial<Customer>) {
-  return apiClient.patch<CustomerDetail>(`/api/customers/${customerId}`, payload);
+  return apiClient.patch<CustomerDetail>(
+    `/api/customers/${customerId}`,
+    payload,
+  );
 }

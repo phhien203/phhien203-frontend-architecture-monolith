@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fetchCustomer, updateCustomer } from "@/api/customers";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { Link, useParams } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+
 import { OrderHistoryOrderLink } from "@/components/customers/order-history-order-link";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";
@@ -12,10 +11,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
-import type { Customer } from "@/types";
 import { formatCurrency, formatDate } from "@/lib/utils";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
+import type { Customer } from "@/types";
+
+import { fetchCustomer, updateCustomer } from "../api/customers.api";
 
 export default function CustomerDetailPage() {
   const { customerId } = useParams({ from: "/customers/$customerId" });
@@ -45,10 +54,13 @@ export default function CustomerDetailPage() {
   }, [data]);
 
   const mutation = useMutation({
-    mutationFn: (payload: Partial<Customer>) => updateCustomer(customerId, payload),
+    mutationFn: (payload: Partial<Customer>) =>
+      updateCustomer(customerId, payload),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["customers"] });
-      await queryClient.invalidateQueries({ queryKey: ["customers", customerId] });
+      await queryClient.invalidateQueries({
+        queryKey: ["customers", customerId],
+      });
     },
   });
 
@@ -57,7 +69,7 @@ export default function CustomerDetailPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <section className="space-y-6">
       <PageHeader
         title={form.name}
         description={form.email}
@@ -78,15 +90,17 @@ export default function CustomerDetailPage() {
                 <TableHead>Total</TableHead>
               </TableRow>
             </TableHeader>
-              <TableBody>
-                {data.orderHistory.map((order) => (
-                  <TableRow key={order.id}>
-                    <TableCell>
-                      <OrderHistoryOrderLink order={order} />
-                    </TableCell>
-                    <TableCell className="table-cell-muted">{formatDate(order.date)}</TableCell>
-                    <TableCell>
-                      <StatusBadge status={order.status} />
+            <TableBody>
+              {data.orderHistory.map((order) => (
+                <TableRow key={order.id}>
+                  <TableCell>
+                    <OrderHistoryOrderLink order={order} />
+                  </TableCell>
+                  <TableCell className="table-cell-muted">
+                    {formatDate(order.date)}
+                  </TableCell>
+                  <TableCell>
+                    <StatusBadge status={order.status} />
                   </TableCell>
                   <TableCell>{formatCurrency(order.total)}</TableCell>
                 </TableRow>
@@ -98,11 +112,26 @@ export default function CustomerDetailPage() {
           <SectionCard title="Profile" contentClassName="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" disabled={!canEditCustomer} value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} />
+              <Input
+                id="name"
+                disabled={!canEditCustomer}
+                value={form.name}
+                onChange={(event) =>
+                  setForm({ ...form, name: event.target.value })
+                }
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" disabled={!canEditCustomer} value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} />
+              <Input
+                id="email"
+                type="email"
+                disabled={!canEditCustomer}
+                value={form.email}
+                onChange={(event) =>
+                  setForm({ ...form, email: event.target.value })
+                }
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="segment">Segment</Label>
@@ -110,7 +139,12 @@ export default function CustomerDetailPage() {
                 id="segment"
                 disabled={!canEditCustomer}
                 value={form.segment}
-                onChange={(event) => setForm({ ...form, segment: event.target.value as Customer["segment"] })}
+                onChange={(event) =>
+                  setForm({
+                    ...form,
+                    segment: event.target.value as Customer["segment"],
+                  })
+                }
               >
                 <option value="VIP">VIP</option>
                 <option value="Wholesale">Wholesale</option>
@@ -151,7 +185,10 @@ export default function CustomerDetailPage() {
               </div>
             </div>
             <div className="flex justify-end">
-              <Button disabled={!canEditCustomer || mutation.isPending} onClick={() => void mutation.mutateAsync(form)}>
+              <Button
+                disabled={!canEditCustomer || mutation.isPending}
+                onClick={() => void mutation.mutateAsync(form)}
+              >
                 {mutation.isPending ? "Saving..." : "Save customer"}
               </Button>
             </div>
@@ -162,11 +199,13 @@ export default function CustomerDetailPage() {
               id="notes"
               disabled={!canEditCustomer}
               value={form.notes}
-              onChange={(event) => setForm({ ...form, notes: event.target.value })}
+              onChange={(event) =>
+                setForm({ ...form, notes: event.target.value })
+              }
             />
           </SectionCard>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

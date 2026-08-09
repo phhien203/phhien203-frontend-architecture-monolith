@@ -10,6 +10,8 @@ import LoginPage from "@/modules/authentication/screens/login/login";
 import ProductDetailPage from "@/modules/catalog/screens/catalog.detail";
 import CatalogPage from "@/modules/catalog/screens/catalog.index";
 import NewProductPage from "@/modules/catalog/screens/catalog.new";
+import CustomerDetailPage from "@/modules/customers/screens/customers.detail";
+import CustomersIndexPage from "@/modules/customers/screens/customers.index";
 import DiscountsDetailPage from "@/modules/discounts/screens/discounts.detail";
 import DiscountsIndexPage from "@/modules/discounts/screens/discounts.index";
 import DiscountsNewPage from "@/modules/discounts/screens/discounts.new";
@@ -21,8 +23,6 @@ import RolesPermissionsPage from "@/modules/users/screens/users/roles-permission
 import UserDetailPage from "@/modules/users/screens/users/users.detail";
 import UsersPage from "@/modules/users/screens/users/users.index";
 import { NotFoundComponent, RootComponent } from "@/routes/__root";
-import CustomerDetailPage from "@/routes/customers/$customerId";
-import CustomersPage from "@/routes/customers/index";
 import DashboardPage from "@/routes/index";
 import ProfilePage from "@/routes/profile/index";
 
@@ -86,7 +86,7 @@ const orderDetailRoute = createRoute({
 const customersRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/customers",
-  component: CustomersPage,
+  component: CustomersIndexPage,
 });
 
 const customerDetailRoute = createRoute({
