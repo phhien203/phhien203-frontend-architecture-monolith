@@ -1,5 +1,5 @@
 import { apiClient } from "@commerceos/shared/api/client";
-import type { Account, SettingsData } from "@/types";
+import type { Account, SettingsData } from "@commerceos/shared/domain/commerce/settings.types";
 
 export function fetchSettings() {
   return apiClient.get<SettingsData>("/api/settings");

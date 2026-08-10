@@ -1,4 +1,4 @@
-import type { Account } from "@/modules/settings/domain/settings.types";
+import type { Account } from "@commerceos/shared/domain/commerce/settings.types";
 
 export type RoleKey = "account_owner" | "admin" | "user";
 

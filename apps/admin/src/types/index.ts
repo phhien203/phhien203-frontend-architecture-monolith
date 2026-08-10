@@ -27,7 +27,7 @@ export type {
   Account,
   AccountProfile,
   SettingsData,
-} from "@/modules/settings/domain/settings.types";
+} from "@commerceos/shared/domain/commerce/settings.types";
 export type {
   AccountMember,
   AccountPermissionPolicy,
