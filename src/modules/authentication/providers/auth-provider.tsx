@@ -4,10 +4,12 @@ import { type PropsWithChildren, useMemo } from "react";
 import {
   clearStoredAuthToken,
   getStoredAuthToken,
+  setStoredAuthToken,
+} from "@/shared/lib/auth-storage";
+import {
   getViewPermissionForPath,
   ORDERED_APP_PATHS,
-  setStoredAuthToken,
-} from "@/modules/users/lib/auth";
+} from "@/shared/lib/user-permissions";
 import type { PermissionKey } from "@/types";
 import { fetchSession, login, logout, switchAccount } from "../api/auth";
 import { AuthContext, type AuthContextValue } from "./use-auth";

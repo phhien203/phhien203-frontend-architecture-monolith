@@ -1,4 +1,4 @@
-import { getStoredAuthToken } from "@/modules/users/lib/auth";
+import { getStoredAuthToken } from "../lib/auth-storage";
 
 async function request<T>(input: string, init?: RequestInit): Promise<T> {
   const isFormData =
