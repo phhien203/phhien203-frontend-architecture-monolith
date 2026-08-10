@@ -22,7 +22,7 @@ export type {
   OrderStatus,
   PaymentStatus,
   ShipmentStatus,
-} from "@/modules/orders/domain/orders.types";
+} from "@commerceos/shared/domain/commerce/orders.types";
 export type {
   Account,
   AccountProfile,

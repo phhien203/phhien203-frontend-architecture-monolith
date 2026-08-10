@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { fetchOrders } from "@/modules/orders/api/orders.api";
+import { fetchOrders } from "@commerceos/shared/api/commerce/orders.api";
 import { fetchAccountUsers } from "@/modules/users/api/accounts";
 import { ROLE_LABELS } from "@/modules/users/lib/auth";
 import type { PermissionKey } from "@/types";
