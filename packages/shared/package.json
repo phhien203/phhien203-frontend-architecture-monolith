@@ -19,6 +19,7 @@
     "./mocks/*": "./mocks/*.ts",
     "./mocks/data/*": "./mocks/data/*.ts",
     "./providers/*": "./providers/*.tsx",
+    "./router/*": "./router/*.tsx",
     "./styles/globals.css": "./styles/globals.css",
     "./theme/*": "./theme/*.tsx",
     "./ui/*": "./ui/*.tsx"
