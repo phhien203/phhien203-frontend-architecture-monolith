@@ -1,4 +1,7 @@
 import AnalyticsPage from "@commerceos/analytics/screens/analytics.index";
+import ProductDetailPage from "@commerceos/catalog/screens/catalog.detail";
+import CatalogPage from "@commerceos/catalog/screens/catalog.index";
+import NewProductPage from "@commerceos/catalog/screens/catalog.new";
 import { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
@@ -7,9 +10,6 @@ import {
 } from "@tanstack/react-router";
 import { NotFoundComponent, RootComponent } from "@/app/router/root";
 import LoginPage from "@/modules/authentication/screens/login/login";
-import ProductDetailPage from "@/modules/catalog/screens/catalog.detail";
-import CatalogPage from "@/modules/catalog/screens/catalog.index";
-import NewProductPage from "@/modules/catalog/screens/catalog.new";
 import CustomerDetailPage from "@/modules/customers/screens/customers.detail";
 import CustomersIndexPage from "@/modules/customers/screens/customers.index";
 import DashboardIndexPage from "@/modules/dashboard/features/dashboard-overview/dashboard-overview";
@@ -179,7 +179,7 @@ export const router = createRouter({
 });
 
 declare module "@tanstack/react-router" {
-  interface Register {
+	interface Register {
     router: typeof router;
   }
 }

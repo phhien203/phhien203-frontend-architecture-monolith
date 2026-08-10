@@ -1,5 +1,5 @@
 import { apiClient } from "@commerceos/shared/api/client";
-import type { Product } from "@/types";
+import type { Product } from "@commerceos/shared/domain/commerce/catalog.types";
 
 export function fetchProducts() {
   return apiClient.get<Product[]>("/api/products");

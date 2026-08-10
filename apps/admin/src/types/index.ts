@@ -1,15 +1,4 @@
 export type { AuditLogEntry } from "@commerceos/shared/domain/audit-log.types";
-export type { AnalyticsOverview } from "@/modules/analytics/domain/analytics.types";
-export type {
-  BundleComponent,
-  Collection,
-  PriceList,
-  PriceListPrice,
-  Product,
-  ProductKind,
-  ProductStatus,
-  ProductVariant,
-} from "@/modules/catalog/domain/catalog.types";
 export type {
   Customer,
   CustomerDetail,

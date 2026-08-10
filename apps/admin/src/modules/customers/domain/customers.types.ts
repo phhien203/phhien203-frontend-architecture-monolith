@@ -1,4 +1,4 @@
-import type { PriceList } from "@/modules/catalog/domain/catalog.types";
+import type { PriceList } from "@commerceos/shared/domain/commerce/catalog.types";
 import type { Order } from "@/modules/orders/domain/orders.types";
 
 export type CustomerSegment =
