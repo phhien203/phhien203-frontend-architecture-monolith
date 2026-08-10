@@ -72,7 +72,7 @@ export function AppShell({ children }: AppShellProps) {
                 </div>
               </div>
               {session ? (
-                <div className="hidden min-w-[220px] lg:block">
+                <div className="hidden min-w-55 lg:block">
                   <Select
                     value={session.activeAccount.id}
                     onChange={(event) => void switchAccount(event.target.value)}

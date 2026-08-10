@@ -6,6 +6,11 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=apps/admin"
+    "dev": "npm run dev --workspace=apps/app-shell",
+    "build": "tsc --noEmit && vite build",
+    "lint:deps": "depcruise --config .dependency-cruiser.cjs src",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview"
   }
 }
