@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { PageHeader } from "@/shared/components/page-header";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { PageHeader } from "@/shared/components/page-header";
 
 import { createDiscount } from "../api/discounts";
 import {

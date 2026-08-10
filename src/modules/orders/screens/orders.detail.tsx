@@ -1,16 +1,16 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 
-import { LoadingState } from "@/shared/components/feedback/loading-state";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { OrderLineItemsTable } from "@/modules/orders/components/order-line-items-table";
 import { ActivityHistoryCard } from "@/shared/components/activity-history-card";
+import { LoadingState } from "@/shared/components/feedback/loading-state";
 import { KeyValueList } from "@/shared/components/key-value-list";
 import { PageHeader } from "@/shared/components/page-header";
 import { SectionCard } from "@/shared/components/section-card";
 import { StatusBadge } from "@/shared/components/status-badge";
-import { Button } from "@/shared/ui/button";
 import { formatCurrency, formatDate } from "@/shared/lib/utils";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { Button } from "@/shared/ui/button";
 import type { Order } from "@/types";
 
 import { fetchOrder, updateOrder } from "../api/orders.api";

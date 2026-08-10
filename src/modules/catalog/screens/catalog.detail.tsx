@@ -2,9 +2,10 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-import { LoadingState } from "@/shared/components/feedback/loading-state";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { ProductImageField } from "@/modules/catalog/components/product-image-field";
 import { ActivityHistoryCard } from "@/shared/components/activity-history-card";
+import { LoadingState } from "@/shared/components/feedback/loading-state";
 import { PageHeader } from "@/shared/components/page-header";
 import { SectionCard } from "@/shared/components/section-card";
 import { Button } from "@/shared/ui/button";
@@ -20,7 +21,6 @@ import {
   TableRow,
 } from "@/shared/ui/table";
 import { Textarea } from "@/shared/ui/textarea";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { Product } from "@/types";
 
 import { fetchProduct, updateProduct } from "../api/products.api";

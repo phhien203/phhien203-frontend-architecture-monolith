@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { LoadingState } from "@/shared/components/feedback/loading-state";
 import { PageHeader } from "@/shared/components/page-header";
 import { SectionCard } from "@/shared/components/section-card";
 import { StatusBadge } from "@/shared/components/status-badge";
+import { formatDate } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import {
   Table,
@@ -14,8 +16,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
-import { formatDate } from "@/shared/lib/utils";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
 
 import { fetchDiscounts } from "../api/discounts";
 

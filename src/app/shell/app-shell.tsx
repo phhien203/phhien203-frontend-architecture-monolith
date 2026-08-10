@@ -3,11 +3,11 @@ import { Command, Menu, Search } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 
 import { ThemeToggle } from "@/app/shell/theme-toggle";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { ROLE_LABELS } from "@/modules/users/lib/auth";
 import { Button } from "@/shared/ui/button";
 import { Select } from "@/shared/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@/shared/ui/sheet";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { ROLE_LABELS } from "@/modules/users/lib/auth";
 
 import { CommandMenu } from "./command-menu";
 import { navItems } from "./nav-items";

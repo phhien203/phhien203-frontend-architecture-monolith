@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { ProductImageField } from "@/modules/catalog/components/product-image-field";
 import { PageHeader } from "@/shared/components/page-header";
 import { SectionCard } from "@/shared/components/section-card";
@@ -10,7 +11,6 @@ import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
 import { Select } from "@/shared/ui/select";
 import { Textarea } from "@/shared/ui/textarea";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { Product } from "@/types";
 
 import { createProduct } from "../api/products.api";

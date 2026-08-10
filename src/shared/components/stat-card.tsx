@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 
 interface StatCardProps {
@@ -12,7 +12,9 @@ export function StatCard({ title, value, detail, icon }: StatCardProps) {
   return (
     <Card>
       <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-3">
-        <CardTitle className="text-sm font-medium text-muted-foreground">{title}</CardTitle>
+        <CardTitle className="text-sm font-medium text-muted-foreground">
+          {title}
+        </CardTitle>
         {icon ? <div className="text-muted-foreground">{icon}</div> : null}
       </CardHeader>
       <CardContent>

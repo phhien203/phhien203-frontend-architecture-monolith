@@ -19,6 +19,7 @@ import {
 import { LoadingState } from "@/shared/components/feedback/loading-state";
 import { PageHeader } from "@/shared/components/page-header";
 import { StatCard } from "@/shared/components/stat-card";
+import { formatCurrency, formatNumber } from "@/shared/lib/utils";
 import {
   Card,
   CardContent,
@@ -31,7 +32,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/shared/ui/chart";
-import { formatCurrency, formatNumber } from "@/shared/lib/utils";
 
 import { fetchAnalyticsOverview } from "../../api/analytics";
 import {

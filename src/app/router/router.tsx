@@ -21,10 +21,10 @@ import InventoryIndexPage from "@/modules/inventory/screens/inventory.index";
 import OrdersDetailPage from "@/modules/orders/screens/orders.detail";
 import OrdersIndexPage from "@/modules/orders/screens/orders.index";
 import SettingsPage from "@/modules/settings/screens/settings.index";
+import ProfilePage from "@/modules/users/screens/profile/profile.index";
 import RolesPermissionsPage from "@/modules/users/screens/users/roles-permissions";
 import UserDetailPage from "@/modules/users/screens/users/users.detail";
 import UsersPage from "@/modules/users/screens/users/users.index";
-import ProfilePage from "@/routes/profile/index";
 
 export interface RouterContext {
   queryClient: QueryClient;

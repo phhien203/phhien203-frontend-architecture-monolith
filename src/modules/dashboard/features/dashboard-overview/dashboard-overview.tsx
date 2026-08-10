@@ -18,6 +18,7 @@ import { LoadingState } from "@/shared/components/feedback/loading-state";
 import { PageHeader } from "@/shared/components/page-header";
 import { StatCard } from "@/shared/components/stat-card";
 import { StatusBadge } from "@/shared/components/status-badge";
+import { formatCurrency, formatDate, formatNumber } from "@/shared/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import {
   ChartContainer,
@@ -32,7 +33,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
-import { formatCurrency, formatDate, formatNumber } from "@/shared/lib/utils";
 
 import { fetchDashboardSummary } from "../../api/dashboard.api";
 

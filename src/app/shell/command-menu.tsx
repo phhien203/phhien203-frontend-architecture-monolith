@@ -17,16 +17,16 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { Button } from "@/shared/ui/button";
-import { Dialog, DialogContent } from "@/shared/ui/dialog";
-import { Input } from "@/shared/ui/input";
-import { cn, formatCurrency, formatDate } from "@/shared/lib/utils";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { fetchProducts } from "@/modules/catalog/api/products.api";
 import { fetchCustomers } from "@/modules/customers/api/customers.api";
 import { fetchOrders } from "@/modules/orders/api/orders.api";
 import { fetchAccountUsers } from "@/modules/users/api/accounts";
 import { ROLE_LABELS } from "@/modules/users/lib/auth";
+import { cn, formatCurrency, formatDate } from "@/shared/lib/utils";
+import { Button } from "@/shared/ui/button";
+import { Dialog, DialogContent } from "@/shared/ui/dialog";
+import { Input } from "@/shared/ui/input";
 import type { PermissionKey } from "@/types";
 
 interface CommandMenuProps {

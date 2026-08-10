@@ -2,11 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { EmptyState } from "@/shared/components/feedback/empty-state";
 import { LoadingState } from "@/shared/components/feedback/loading-state";
 import { PageHeader } from "@/shared/components/page-header";
 import { SectionCard } from "@/shared/components/section-card";
 import { StatusBadge } from "@/shared/components/status-badge";
+import { formatCurrency } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Select } from "@/shared/ui/select";
@@ -18,8 +20,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
-import { formatCurrency } from "@/shared/lib/utils";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
 
 import { fetchProducts } from "../api/products.api";
 import { useCatalogFilters } from "../hooks/use-catalog-filters";

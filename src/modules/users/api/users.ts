@@ -1,8 +1,10 @@
-import type { AccountMember, AuthUser } from "@/types";
 import { apiClient } from "@/shared/api/client";
+import type { AccountMember, AuthUser } from "@/types";
 
 export function fetchAccountUser(accountId: string, userId: string) {
-  return apiClient.get<AccountMember>(`/api/accounts/${accountId}/users/${userId}`);
+  return apiClient.get<AccountMember>(
+    `/api/accounts/${accountId}/users/${userId}`,
+  );
 }
 
 export function fetchProfile() {

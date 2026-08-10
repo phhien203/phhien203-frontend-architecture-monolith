@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { LoadingState } from "@/shared/components/feedback/loading-state";
 import { PageHeader } from "@/shared/components/page-header";
 import { SectionCard } from "@/shared/components/section-card";
@@ -8,7 +9,6 @@ import { ToggleSettingRow } from "@/shared/components/toggle-setting-row";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { Account, SettingsData } from "@/types";
 
 import {

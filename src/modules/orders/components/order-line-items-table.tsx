@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import type { OrderLineItem } from "@/types";
+
+import { formatCurrency } from "@/shared/lib/utils";
 import {
   Table,
   TableBody,
@@ -8,14 +9,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
-import { formatCurrency } from "@/shared/lib/utils";
+import type { OrderLineItem } from "@/types";
 
 interface OrderLineItemsTableProps {
   items: OrderLineItem[];
   className?: string;
 }
 
-export function OrderLineItemsTable({ items, className }: OrderLineItemsTableProps) {
+export function OrderLineItemsTable({
+  items,
+  className,
+}: OrderLineItemsTableProps) {
   return (
     <Table className={className}>
       <TableHeader>

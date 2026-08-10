@@ -1,4 +1,5 @@
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+
 import { cn } from "@/shared/lib/utils";
 
 export const DropdownMenu = DropdownMenuPrimitive.Root;
@@ -14,7 +15,7 @@ export function DropdownMenuContent({
       <DropdownMenuPrimitive.Content
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[14rem] overflow-hidden rounded-md border bg-card p-1 text-card-foreground shadow-md",
+          "z-50 min-w-56 overflow-hidden rounded-md border bg-card p-1 text-card-foreground shadow-md",
           className,
         )}
         {...props}
