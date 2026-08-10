@@ -7,7 +7,7 @@ import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionCard } from "@/components/shared/section-card";
 import { StatusBadge } from "@/components/shared/status-badge";
-import { Select } from "@/components/ui/select";
+import { Select } from "@/shared/ui/select";
 import {
   Table,
   TableBody,
@@ -15,7 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@/shared/ui/table";
 import { formatCurrency, formatDate } from "@/shared/lib/utils";
 
 import { fetchOrders } from "../api/orders.api";

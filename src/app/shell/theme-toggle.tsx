@@ -2,13 +2,13 @@ import { Check, Monitor, Moon, Sun } from "lucide-react";
 
 import type { Theme } from "@/app/providers/theme-context";
 import { useTheme } from "@/app/providers/use-theme";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/shared/ui/dropdown-menu";
 import { cn } from "@/shared/lib/utils";
 
 const themeOptions: Array<{ value: Theme; label: string; icon: typeof Sun }> = [

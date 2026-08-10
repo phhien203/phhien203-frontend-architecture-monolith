@@ -1,4 +1,4 @@
-import { Switch } from "@/components/ui/switch";
+import { Switch } from "@/shared/ui/switch";
 
 interface ToggleSettingRowProps {
   title: string;
@@ -21,7 +21,11 @@ export function ToggleSettingRow({
         <div className="font-medium">{title}</div>
         <div className="text-sm text-muted-foreground">{description}</div>
       </div>
-      <Switch disabled={disabled} checked={checked} onCheckedChange={onCheckedChange} />
+      <Switch
+        disabled={disabled}
+        checked={checked}
+        onCheckedChange={onCheckedChange}
+      />
     </div>
   );
 }

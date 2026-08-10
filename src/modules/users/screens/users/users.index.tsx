@@ -7,8 +7,8 @@ import { PageHeader } from "@/components/shared/page-header";
 import { SectionCard } from "@/components/shared/section-card";
 import { StatCard } from "@/components/shared/stat-card";
 import { StatusBadge } from "@/components/shared/status-badge";
-import { Button } from "@/components/ui/button";
-import { Select } from "@/components/ui/select";
+import { Button } from "@/shared/ui/button";
+import { Select } from "@/shared/ui/select";
 import {
   Table,
   TableBody,
@@ -16,7 +16,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@/shared/ui/table";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { RoleKey } from "@/types";
 

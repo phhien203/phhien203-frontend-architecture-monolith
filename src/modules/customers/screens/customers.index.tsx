@@ -7,8 +7,8 @@ import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionCard } from "@/components/shared/section-card";
 import { StatusBadge } from "@/components/shared/status-badge";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
+import { Input } from "@/shared/ui/input";
+import { Select } from "@/shared/ui/select";
 import {
   Table,
   TableBody,
@@ -16,7 +16,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@/shared/ui/table";
 import { formatCurrency, formatDate } from "@/shared/lib/utils";
 
 import { fetchCustomers } from "../api/customers.api";

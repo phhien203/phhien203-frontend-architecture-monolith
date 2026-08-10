@@ -25,12 +25,12 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/shared/ui/card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/shared/ui/chart";
 import { formatCurrency, formatNumber } from "@/shared/lib/utils";
 
 import { fetchAnalyticsOverview } from "../../api/analytics";

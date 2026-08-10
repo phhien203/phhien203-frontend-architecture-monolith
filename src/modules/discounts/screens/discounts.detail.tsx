@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { ActivityHistoryCard } from "@/components/shared/activity-history-card";
 import { PageHeader } from "@/components/shared/page-header";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/ui/button";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import {
   DiscountForm,

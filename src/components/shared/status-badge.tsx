@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/shared/ui/badge";
 
 type Tone = "default" | "success" | "warning" | "danger" | "info";
 
@@ -38,5 +38,9 @@ interface StatusBadgeProps {
 
 export function StatusBadge({ status }: StatusBadgeProps) {
   const normalized = status.toLowerCase().replace(/\s+/g, "_");
-  return <Badge variant={statusToneMap[normalized] ?? "default"}>{status.replace(/_/g, " ")}</Badge>;
+  return (
+    <Badge variant={statusToneMap[normalized] ?? "default"}>
+      {status.replace(/_/g, " ")}
+    </Badge>
+  );
 }

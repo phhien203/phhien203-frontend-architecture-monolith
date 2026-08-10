@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/shared/ui/dropdown-menu";
 import { cn } from "@/shared/lib/utils";
 import { ROLE_LABELS } from "@/modules/users/lib/auth";
 

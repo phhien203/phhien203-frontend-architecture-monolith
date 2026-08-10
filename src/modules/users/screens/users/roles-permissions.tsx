@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
+import { Button } from "@/shared/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
+import { Switch } from "@/shared/ui/switch";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { AccountPermissionPolicy } from "@/types";
 

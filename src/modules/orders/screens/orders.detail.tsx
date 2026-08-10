@@ -8,7 +8,7 @@ import { KeyValueList } from "@/components/shared/key-value-list";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionCard } from "@/components/shared/section-card";
 import { StatusBadge } from "@/components/shared/status-badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/ui/button";
 import { formatCurrency, formatDate } from "@/shared/lib/utils";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { Order } from "@/types";

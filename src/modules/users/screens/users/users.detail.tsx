@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionCard } from "@/components/shared/section-card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+import { Label } from "@/shared/ui/label";
+import { Select } from "@/shared/ui/select";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { AccountMember, RoleKey } from "@/types";
 

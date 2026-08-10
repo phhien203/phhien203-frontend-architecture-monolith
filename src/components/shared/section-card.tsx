@@ -1,6 +1,12 @@
 import type { ReactNode } from "react";
 import { cn } from "@/shared/lib/utils";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/shared/ui/card";
 
 interface SectionCardProps {
   id?: string;
