@@ -1,4 +1,4 @@
-import type { PermissionKey } from "@/types";
+import type { PermissionKey } from "@commerceos/shared/domain/commerce/users.types";
 
 export const VIEW_PERMISSION_BY_PATH: Array<{
   prefix: string;

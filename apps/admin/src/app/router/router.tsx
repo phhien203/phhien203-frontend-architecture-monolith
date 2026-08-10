@@ -1,12 +1,11 @@
+import AnalyticsPage from "@commerceos/analytics/screens/analytics.index";
 import { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
-
 import { NotFoundComponent, RootComponent } from "@/app/router/root";
-import AnalyticsPage from "@/modules/analytics/screens/analytics.index";
 import LoginPage from "@/modules/authentication/screens/login/login";
 import ProductDetailPage from "@/modules/catalog/screens/catalog.detail";
 import CatalogPage from "@/modules/catalog/screens/catalog.index";

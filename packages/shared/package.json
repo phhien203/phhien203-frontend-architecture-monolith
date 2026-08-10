@@ -18,6 +18,7 @@
     "./lib/*": "./lib/*.ts",
     "./mocks/*": "./mocks/*.ts",
     "./mocks/data/*": "./mocks/data/*.ts",
+    "./permissions/*": "./permissions/*.ts",
     "./providers/*": "./providers/*.tsx",
     "./router/*": "./router/*.tsx",
     "./styles/globals.css": "./styles/globals.css",

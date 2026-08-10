@@ -9,7 +9,7 @@ import {
 } from "@commerceos/shared/lib/user-permissions";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { type PropsWithChildren, useMemo } from "react";
-import type { PermissionKey } from "@/types";
+import type { PermissionKey } from "@commerceos/shared/domain/commerce/users.types";
 
 import { fetchSession, login, logout, switchAccount } from "../api/auth";
 import { AuthContext, type AuthContextValue } from "./use-auth";
