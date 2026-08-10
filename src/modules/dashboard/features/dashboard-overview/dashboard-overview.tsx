@@ -14,10 +14,10 @@ import {
   YAxis,
 } from "recharts";
 
-import { LoadingState } from "@/components/feedback/loading-state";
-import { PageHeader } from "@/components/shared/page-header";
-import { StatCard } from "@/components/shared/stat-card";
-import { StatusBadge } from "@/components/shared/status-badge";
+import { LoadingState } from "@/shared/components/feedback/loading-state";
+import { PageHeader } from "@/shared/components/page-header";
+import { StatCard } from "@/shared/components/stat-card";
+import { StatusBadge } from "@/shared/components/status-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import {
   ChartContainer,

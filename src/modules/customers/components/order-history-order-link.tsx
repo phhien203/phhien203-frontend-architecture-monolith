@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { OrderLineItemsTable } from "@/components/orders/order-line-items-table";
+import { useEffect, useRef, useState } from "react";
+
+import { OrderLineItemsTable } from "@/modules/orders/components/order-line-items-table";
 import type { Order } from "@/types";
 
 interface OrderHistoryOrderLinkProps {
@@ -36,14 +37,24 @@ export function OrderHistoryOrderLink({ order }: OrderHistoryOrderLinkProps) {
   useEffect(() => () => clearHoverTimer(), []);
 
   return (
-    <div className="relative inline-flex" onMouseEnter={startHoverTimer} onMouseLeave={closePopover}>
-      <Link to="/orders/$orderId" params={{ orderId: order.id }} className="font-medium text-primary hover:underline">
+    <div
+      className="relative inline-flex"
+      onMouseEnter={startHoverTimer}
+      onMouseLeave={closePopover}
+    >
+      <Link
+        to="/orders/$orderId"
+        params={{ orderId: order.id }}
+        className="font-medium text-primary hover:underline"
+      >
         {order.orderNumber}
       </Link>
 
       {isOpen ? (
-        <div className="absolute left-0 top-full z-20 mt-2 w-[30rem] rounded-lg border bg-card p-4 shadow-panel">
-          <div className="mb-3 text-sm font-medium">Products in {order.orderNumber}</div>
+        <div className="absolute left-0 top-full z-20 mt-2 w-120 rounded-lg border bg-card p-4 shadow-panel">
+          <div className="mb-3 text-sm font-medium">
+            Products in {order.orderNumber}
+          </div>
           <div className="max-h-72 overflow-auto">
             <OrderLineItemsTable items={order.lineItems} />
           </div>

@@ -16,9 +16,9 @@ import {
   YAxis,
 } from "recharts";
 
-import { LoadingState } from "@/components/feedback/loading-state";
-import { PageHeader } from "@/components/shared/page-header";
-import { StatCard } from "@/components/shared/stat-card";
+import { LoadingState } from "@/shared/components/feedback/loading-state";
+import { PageHeader } from "@/shared/components/page-header";
+import { StatCard } from "@/shared/components/stat-card";
 import {
   Card,
   CardContent,

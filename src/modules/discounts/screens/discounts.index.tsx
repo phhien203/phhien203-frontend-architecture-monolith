@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 
-import { LoadingState } from "@/components/feedback/loading-state";
-import { PageHeader } from "@/components/shared/page-header";
-import { SectionCard } from "@/components/shared/section-card";
-import { StatusBadge } from "@/components/shared/status-badge";
+import { LoadingState } from "@/shared/components/feedback/loading-state";
+import { PageHeader } from "@/shared/components/page-header";
+import { SectionCard } from "@/shared/components/section-card";
+import { StatusBadge } from "@/shared/components/status-badge";
 import { Button } from "@/shared/ui/button";
 import {
   Table,

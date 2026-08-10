@@ -2,9 +2,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 
-import { ProductImageField } from "@/components/products/product-image-field";
-import { PageHeader } from "@/components/shared/page-header";
-import { SectionCard } from "@/components/shared/section-card";
+import { ProductImageField } from "@/modules/catalog/components/product-image-field";
+import { PageHeader } from "@/shared/components/page-header";
+import { SectionCard } from "@/shared/components/section-card";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";

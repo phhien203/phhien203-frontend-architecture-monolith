@@ -2,11 +2,12 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-import { OrderHistoryOrderLink } from "@/components/customers/order-history-order-link";
-import { LoadingState } from "@/components/feedback/loading-state";
-import { PageHeader } from "@/components/shared/page-header";
-import { SectionCard } from "@/components/shared/section-card";
-import { StatusBadge } from "@/components/shared/status-badge";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { LoadingState } from "@/shared/components/feedback/loading-state";
+import { PageHeader } from "@/shared/components/page-header";
+import { SectionCard } from "@/shared/components/section-card";
+import { StatusBadge } from "@/shared/components/status-badge";
+import { formatCurrency, formatDate } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
@@ -20,11 +21,10 @@ import {
   TableRow,
 } from "@/shared/ui/table";
 import { Textarea } from "@/shared/ui/textarea";
-import { formatCurrency, formatDate } from "@/shared/lib/utils";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { Customer } from "@/types";
 
 import { fetchCustomer, updateCustomer } from "../api/customers.api";
+import { OrderHistoryOrderLink } from "../components/order-history-order-link";
 
 export default function CustomerDetailPage() {
   const { customerId } = useParams({ from: "/customers/$customerId" });
