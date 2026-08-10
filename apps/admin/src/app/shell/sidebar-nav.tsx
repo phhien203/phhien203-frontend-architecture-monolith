@@ -1,10 +1,4 @@
-import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { CircleUserRound, EllipsisVertical, LogOut, Store } from "lucide-react";
-
-import { navItems } from "@/app/shell/nav-items";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { ROLE_LABELS } from "@/modules/users/lib/auth";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@commerceos/shared/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,10 +6,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
+} from "@commerceos/shared/ui/dropdown-menu";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { CircleUserRound, EllipsisVertical, LogOut, Store } from "lucide-react";
+import { navItems } from "@/app/shell/nav-items";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { ROLE_LABELS } from "@/modules/users/lib/auth";
 
 export function SidebarNav() {
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
   const navigate = useNavigate();
   const { session, hasPermission, logout } = useAuth();
 
@@ -28,42 +29,56 @@ export function SidebarNav() {
         <div>
           <div className="text-sm font-semibold">CommerceOS</div>
           <div className="text-xs text-muted-foreground">
-            {session ? `${session.activeAccount.name} · ${ROLE_LABELS[session.activeRole]}` : "Admin"}
+            {session
+              ? `${session.activeAccount.name} · ${ROLE_LABELS[session.activeRole]}`
+              : "Admin"}
           </div>
         </div>
       </div>
       <nav className="mt-4 flex-1 space-y-1">
-        {navItems.filter((item) => hasPermission(item.permission)).map((item) => {
-          const isActive = pathname === item.to || (item.to !== "/" && pathname.startsWith(item.to));
-          const Icon = item.icon;
-          return (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={cn(
-                "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
-                isActive && "bg-accent text-foreground",
-              )}
-            >
-              <Icon className="h-4 w-4" />
-              {item.label}
-            </Link>
-          );
-        })}
+        {navItems
+          .filter((item) => hasPermission(item.permission))
+          .map((item) => {
+            const isActive =
+              pathname === item.to ||
+              (item.to !== "/" && pathname.startsWith(item.to));
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={cn(
+                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
+                  isActive && "bg-accent text-foreground",
+                )}
+              >
+                <Icon className="h-4 w-4" />
+                {item.label}
+              </Link>
+            );
+          })}
       </nav>
       {session ? (
         <div className="rounded-xl border bg-card p-2 shadow-sm">
           <div className="flex items-center gap-3 rounded-lg px-2 py-2">
             {session.user.avatarUrl ? (
-              <img src={session.user.avatarUrl} alt={session.user.name} className="h-10 w-10 rounded-full object-cover" />
+              <img
+                src={session.user.avatarUrl}
+                alt={session.user.name}
+                className="h-10 w-10 rounded-full object-cover"
+              />
             ) : (
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-sm font-semibold">
                 {session.user.initials}
               </div>
             )}
             <div className="min-w-0 flex-1">
-              <div className="truncate text-sm font-semibold">{session.user.name}</div>
-              <div className="truncate text-sm text-muted-foreground">{session.user.email}</div>
+              <div className="truncate text-sm font-semibold">
+                {session.user.name}
+              </div>
+              <div className="truncate text-sm text-muted-foreground">
+                {session.user.email}
+              </div>
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -77,19 +92,29 @@ export function SidebarNav() {
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuLabel className="flex items-center gap-3">
                   {session.user.avatarUrl ? (
-                    <img src={session.user.avatarUrl} alt={session.user.name} className="h-10 w-10 rounded-md object-cover" />
+                    <img
+                      src={session.user.avatarUrl}
+                      alt={session.user.name}
+                      className="h-10 w-10 rounded-md object-cover"
+                    />
                   ) : (
                     <div className="flex h-10 w-10 items-center justify-center rounded-md bg-secondary text-sm font-semibold">
                       {session.user.initials}
                     </div>
                   )}
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-semibold leading-none">{session.user.name}</div>
-                    <div className="mt-1 truncate text-xs text-muted-foreground">{session.user.email}</div>
+                    <div className="truncate text-sm font-semibold leading-none">
+                      {session.user.name}
+                    </div>
+                    <div className="mt-1 truncate text-xs text-muted-foreground">
+                      {session.user.email}
+                    </div>
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => void navigate({ to: "/profile" })}>
+                <DropdownMenuItem
+                  onClick={() => void navigate({ to: "/profile" })}
+                >
                   <CircleUserRound className="h-4 w-4 text-muted-foreground" />
                   <span>Account</span>
                 </DropdownMenuItem>

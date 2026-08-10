@@ -3,15 +3,26 @@ import type { Product } from "@/types";
 
 export function useCatalogFilters(
   products: Product[] | undefined,
-  filters: { search: string; category: string; status: string; collectionId: string },
+  filters: {
+    search: string;
+    category: string;
+    status: string;
+    collectionId: string;
+  },
 ) {
   const categories = useMemo(
-    () => ["all", ...new Set((products ?? []).map((product) => product.category))],
+    () => [
+      "all",
+      ...new Set((products ?? []).map((product) => product.category)),
+    ],
     [products],
   );
 
   const collections = useMemo(() => {
-    const entries = new Map<string, NonNullable<Product["collections"]>[number]>();
+    const entries = new Map<
+      string,
+      NonNullable<Product["collections"]>[number]
+    >();
     for (const product of products ?? []) {
       for (const collection of product.collections ?? []) {
         entries.set(collection.id, collection);
@@ -22,14 +33,27 @@ export function useCatalogFilters(
 
   const filteredProducts = useMemo(() => {
     return (products ?? []).filter((product) => {
-      const matchesSearch = product.name.toLowerCase().includes(filters.search.toLowerCase());
-      const matchesCategory = filters.category === "all" || product.category === filters.category;
-      const matchesStatus = filters.status === "all" || product.status === filters.status;
+      const matchesSearch = product.name
+        .toLowerCase()
+        .includes(filters.search.toLowerCase());
+      const matchesCategory =
+        filters.category === "all" || product.category === filters.category;
+      const matchesStatus =
+        filters.status === "all" || product.status === filters.status;
       const matchesCollection =
-        filters.collectionId === "all" || product.collectionIds.includes(filters.collectionId);
-      return matchesSearch && matchesCategory && matchesStatus && matchesCollection;
+        filters.collectionId === "all" ||
+        product.collectionIds.includes(filters.collectionId);
+      return (
+        matchesSearch && matchesCategory && matchesStatus && matchesCollection
+      );
     });
-  }, [filters.category, filters.collectionId, filters.search, filters.status, products]);
+  }, [
+    filters.category,
+    filters.collectionId,
+    filters.search,
+    filters.status,
+    products,
+  ]);
 
   return {
     categories,

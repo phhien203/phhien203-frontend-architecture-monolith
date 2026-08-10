@@ -1,14 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-
-import { EmptyState } from "@/shared/components/feedback/empty-state";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { StatusBadge } from "@/shared/components/status-badge";
-import { formatCurrency, formatDate } from "@/shared/lib/utils";
-import { Select } from "@/shared/ui/select";
+import { EmptyState } from "@commerceos/shared/components/feedback/empty-state";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { StatusBadge } from "@commerceos/shared/components/status-badge";
+import { formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
+import { Select } from "@commerceos/shared/ui/select";
 import {
   Table,
   TableBody,
@@ -16,7 +12,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/ui/table";
+} from "@commerceos/shared/ui/table";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 
 import { fetchOrders } from "../api/orders.api";
 

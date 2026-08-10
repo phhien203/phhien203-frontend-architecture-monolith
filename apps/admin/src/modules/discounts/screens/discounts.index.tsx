@@ -1,13 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
-
-import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { StatusBadge } from "@/shared/components/status-badge";
-import { formatDate } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui/button";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { StatusBadge } from "@commerceos/shared/components/status-badge";
+import { formatDate } from "@commerceos/shared/lib/utils";
+import { Button } from "@commerceos/shared/ui/button";
 import {
   Table,
   TableBody,
@@ -15,7 +11,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/ui/table";
+} from "@commerceos/shared/ui/table";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 
 import { fetchDiscounts } from "../api/discounts";
 

@@ -1,3 +1,4 @@
+export type { AuditLogEntry } from "@commerceos/shared/domain/audit-log.types";
 export type { AnalyticsOverview } from "@/modules/analytics/domain/analytics.types";
 export type {
   BundleComponent,
@@ -48,4 +49,3 @@ export type {
   RoleKey,
   SessionMembership,
 } from "@/modules/users/domain/users.types";
-export type { AuditLogEntry } from "@/shared/domain/audit-log.types";

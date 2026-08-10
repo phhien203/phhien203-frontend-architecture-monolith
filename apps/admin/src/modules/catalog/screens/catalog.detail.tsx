@@ -1,17 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-
-import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { ProductImageField } from "@/modules/catalog/components/product-image-field";
-import { ActivityHistoryCard } from "@/shared/components/activity-history-card";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { Button } from "@/shared/ui/button";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
-import { Select } from "@/shared/ui/select";
+import { ActivityHistoryCard } from "@commerceos/shared/components/activity-history-card";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { Button } from "@commerceos/shared/ui/button";
+import { Input } from "@commerceos/shared/ui/input";
+import { Label } from "@commerceos/shared/ui/label";
+import { Select } from "@commerceos/shared/ui/select";
 import {
   Table,
   TableBody,
@@ -19,8 +13,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/ui/table";
-import { Textarea } from "@/shared/ui/textarea";
+} from "@commerceos/shared/ui/table";
+import { Textarea } from "@commerceos/shared/ui/textarea";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Link, useParams } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { ProductImageField } from "@/modules/catalog/components/product-image-field";
 import type { Product } from "@/types";
 
 import { fetchProduct, updateProduct } from "../api/products.api";

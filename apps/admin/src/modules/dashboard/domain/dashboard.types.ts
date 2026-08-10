@@ -7,7 +7,11 @@ export interface DashboardSummary {
   orders: number;
   customers: number;
   lowStockItems: number;
-  recentOrderRevenueTrend: Array<{ label: string; revenue: number; orders: number }>;
+  recentOrderRevenueTrend: Array<{
+    label: string;
+    revenue: number;
+    orders: number;
+  }>;
   orderDistribution: Array<{ label: OrderStatus; value: number }>;
   recentOrders: Order[];
   notifications: {

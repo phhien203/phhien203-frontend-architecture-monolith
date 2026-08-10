@@ -1,15 +1,10 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
-import { useMemo } from "react";
-
-import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { StatCard } from "@/shared/components/stat-card";
-import { StatusBadge } from "@/shared/components/status-badge";
-import { Button } from "@/shared/ui/button";
-import { Select } from "@/shared/ui/select";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { StatCard } from "@commerceos/shared/components/stat-card";
+import { StatusBadge } from "@commerceos/shared/components/status-badge";
+import { Button } from "@commerceos/shared/ui/button";
+import { Select } from "@commerceos/shared/ui/select";
 import {
   Table,
   TableBody,
@@ -17,7 +12,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/ui/table";
+} from "@commerceos/shared/ui/table";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
+import { useMemo } from "react";
+import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { RoleKey } from "@/types";
 
 import { fetchAccountUsers, updateAccountUser } from "../../api/accounts";

@@ -26,7 +26,8 @@ function getExtensionFromMimeType(mimeType) {
 
 function getUploadFileName(originalName, mimeType) {
   const parsedExtension = path.extname(originalName ?? "").toLowerCase();
-  const extension = parsedExtension || getExtensionFromMimeType(mimeType) || ".bin";
+  const extension =
+    parsedExtension || getExtensionFromMimeType(mimeType) || ".bin";
   return `${Date.now()}-${randomUUID()}${extension}`;
 }
 
@@ -61,7 +62,8 @@ async function handleAvatarUpload(req, res) {
   try {
     const payload = await readJsonBody(req);
     const dataUrl = typeof payload.dataUrl === "string" ? payload.dataUrl : "";
-    const fileName = typeof payload.fileName === "string" ? payload.fileName : "avatar";
+    const fileName =
+      typeof payload.fileName === "string" ? payload.fileName : "avatar";
     const match = dataUrl.match(/^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/);
 
     if (!match) {
@@ -89,7 +91,10 @@ async function handleAvatarUpload(req, res) {
 
 function avatarUploadPlugin() {
   const middleware = async (req, res, next) => {
-    if (req.method === "POST" && (req.url === "/api/uploads/avatar" || req.url === "/api/uploads/image")) {
+    if (
+      req.method === "POST" &&
+      (req.url === "/api/uploads/avatar" || req.url === "/api/uploads/image")
+    ) {
       await handleAvatarUpload(req, res);
       return;
     }

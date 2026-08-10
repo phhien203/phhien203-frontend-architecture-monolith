@@ -1,3 +1,19 @@
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { StatCard } from "@commerceos/shared/components/stat-card";
+import { formatCurrency, formatNumber } from "@commerceos/shared/lib/utils";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@commerceos/shared/ui/card";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@commerceos/shared/ui/chart";
 import { useQuery } from "@tanstack/react-query";
 import {
   Bar,
@@ -16,29 +32,11 @@ import {
   YAxis,
 } from "recharts";
 
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { StatCard } from "@/shared/components/stat-card";
-import { formatCurrency, formatNumber } from "@/shared/lib/utils";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/shared/ui/card";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/shared/ui/chart";
-
 import { fetchAnalyticsOverview } from "../../api/analytics";
 import {
   formatAnalyticsMonth,
   formatAnalyticsWeek,
 } from "../../utils/analytics-date";
-
 
 const CATEGORY_COLORS = [
   "hsl(217 91% 60%)",

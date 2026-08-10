@@ -1,16 +1,16 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { type PropsWithChildren, useMemo } from "react";
-
 import {
   clearStoredAuthToken,
   getStoredAuthToken,
   setStoredAuthToken,
-} from "@/shared/lib/auth-storage";
+} from "@commerceos/shared/lib/auth-storage";
 import {
   getViewPermissionForPath,
   ORDERED_APP_PATHS,
-} from "@/shared/lib/user-permissions";
+} from "@commerceos/shared/lib/user-permissions";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { type PropsWithChildren, useMemo } from "react";
 import type { PermissionKey } from "@/types";
+
 import { fetchSession, login, logout, switchAccount } from "../api/auth";
 import { AuthContext, type AuthContextValue } from "./use-auth";
 

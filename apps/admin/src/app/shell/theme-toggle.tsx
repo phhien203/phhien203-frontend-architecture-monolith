@@ -1,15 +1,14 @@
-import { Check, Monitor, Moon, Sun } from "lucide-react";
-
-import type { Theme } from "@/app/providers/theme-context";
-import { useTheme } from "@/app/providers/use-theme";
-import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui/button";
+import { cn } from "@commerceos/shared/lib/utils";
+import { Button } from "@commerceos/shared/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
+} from "@commerceos/shared/ui/dropdown-menu";
+import { Check, Monitor, Moon, Sun } from "lucide-react";
+import type { Theme } from "@/app/providers/theme-context";
+import { useTheme } from "@/app/providers/use-theme";
 
 const themeOptions: Array<{ value: Theme; label: string; icon: typeof Sun }> = [
   { value: "light", label: "Light", icon: Sun },

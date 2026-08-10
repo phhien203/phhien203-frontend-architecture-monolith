@@ -1,3 +1,7 @@
+import { cn, formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
+import { Button } from "@commerceos/shared/ui/button";
+import { Dialog, DialogContent } from "@commerceos/shared/ui/dialog";
+import { Input } from "@commerceos/shared/ui/input";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
@@ -16,17 +20,12 @@ import {
   Users,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { fetchProducts } from "@/modules/catalog/api/products.api";
 import { fetchCustomers } from "@/modules/customers/api/customers.api";
 import { fetchOrders } from "@/modules/orders/api/orders.api";
 import { fetchAccountUsers } from "@/modules/users/api/accounts";
 import { ROLE_LABELS } from "@/modules/users/lib/auth";
-import { cn, formatCurrency, formatDate } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui/button";
-import { Dialog, DialogContent } from "@/shared/ui/dialog";
-import { Input } from "@/shared/ui/input";
 import type { PermissionKey } from "@/types";
 
 interface CommandMenuProps {

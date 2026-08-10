@@ -1,16 +1,15 @@
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { Button } from "@commerceos/shared/ui/button";
+import { Input } from "@commerceos/shared/ui/input";
+import { Label } from "@commerceos/shared/ui/label";
+import { Select } from "@commerceos/shared/ui/select";
+import { Textarea } from "@commerceos/shared/ui/textarea";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { ProductImageField } from "@/modules/catalog/components/product-image-field";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { Button } from "@/shared/ui/button";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
-import { Select } from "@/shared/ui/select";
-import { Textarea } from "@/shared/ui/textarea";
 import type { Product } from "@/types";
 
 import { createProduct } from "../api/products.api";
@@ -46,8 +45,13 @@ export default function NewProductPage() {
     mutationFn: (payload: Omit<Product, "id">) => createProduct(payload),
     onSuccess: async (created) => {
       await queryClient.invalidateQueries({ queryKey: ["products"] });
-      await queryClient.invalidateQueries({ queryKey: ["dashboard", "summary"] });
-      await navigate({ to: "/catalog/$productId", params: { productId: created.id } });
+      await queryClient.invalidateQueries({
+        queryKey: ["dashboard", "summary"],
+      });
+      await navigate({
+        to: "/catalog/$productId",
+        params: { productId: created.id },
+      });
     },
   });
 
@@ -83,11 +87,25 @@ export default function NewProductPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" disabled={!canEditCatalog} value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} />
+              <Input
+                id="name"
+                disabled={!canEditCatalog}
+                value={form.name}
+                onChange={(event) =>
+                  setForm({ ...form, name: event.target.value })
+                }
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="sku">SKU</Label>
-              <Input id="sku" disabled={!canEditCatalog} value={form.sku} onChange={(event) => setForm({ ...form, sku: event.target.value })} />
+              <Input
+                id="sku"
+                disabled={!canEditCatalog}
+                value={form.sku}
+                onChange={(event) =>
+                  setForm({ ...form, sku: event.target.value })
+                }
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="category">Category</Label>
@@ -95,7 +113,9 @@ export default function NewProductPage() {
                 id="category"
                 disabled={!canEditCatalog}
                 value={form.category}
-                onChange={(event) => setForm({ ...form, category: event.target.value })}
+                onChange={(event) =>
+                  setForm({ ...form, category: event.target.value })
+                }
               />
             </div>
             <div className="space-y-2">
@@ -104,7 +124,12 @@ export default function NewProductPage() {
                 id="kind"
                 disabled={!canEditCatalog}
                 value={form.kind}
-                onChange={(event) => setForm({ ...form, kind: event.target.value as Product["kind"] })}
+                onChange={(event) =>
+                  setForm({
+                    ...form,
+                    kind: event.target.value as Product["kind"],
+                  })
+                }
               >
                 <option value="standard">Standard</option>
                 <option value="bundle">Bundle</option>
@@ -118,7 +143,9 @@ export default function NewProductPage() {
                 min="0"
                 disabled={!canEditCatalog}
                 value={form.price}
-                onChange={(event) => setForm({ ...form, price: Number(event.target.value) })}
+                onChange={(event) =>
+                  setForm({ ...form, price: Number(event.target.value) })
+                }
               />
             </div>
             <div className="space-y-2">
@@ -127,7 +154,12 @@ export default function NewProductPage() {
                 id="status"
                 disabled={!canEditCatalog}
                 value={form.status}
-                onChange={(event) => setForm({ ...form, status: event.target.value as Product["status"] })}
+                onChange={(event) =>
+                  setForm({
+                    ...form,
+                    status: event.target.value as Product["status"],
+                  })
+                }
               >
                 <option value="active">Active</option>
                 <option value="draft">Draft</option>
@@ -141,7 +173,9 @@ export default function NewProductPage() {
               id="description"
               disabled={!canEditCatalog}
               value={form.description}
-              onChange={(event) => setForm({ ...form, description: event.target.value })}
+              onChange={(event) =>
+                setForm({ ...form, description: event.target.value })
+              }
             />
           </div>
           <div className="flex justify-end">

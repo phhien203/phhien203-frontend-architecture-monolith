@@ -1,4 +1,4 @@
-import { apiClient } from "@/shared/api/client";
+import { apiClient } from "@commerceos/shared/api/client";
 import type { Customer, Order } from "@/types";
 
 export interface CustomerDetail extends Customer {

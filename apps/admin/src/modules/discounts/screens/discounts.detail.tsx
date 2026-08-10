@@ -1,16 +1,15 @@
+import { ActivityHistoryCard } from "@commerceos/shared/components/activity-history-card";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { Button } from "@commerceos/shared/ui/button";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import {
   DiscountForm,
   type DiscountFormValues,
 } from "@/modules/discounts/components/discount-form";
-import { ActivityHistoryCard } from "@/shared/components/activity-history-card";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { Button } from "@/shared/ui/button";
 import type { Discount } from "@/types";
 
 import { fetchDiscount, updateDiscount } from "../api/discounts";

@@ -1,4 +1,4 @@
-import { apiClient } from "@/shared/api/client";
+import { apiClient } from "@commerceos/shared/api/client";
 import type { AccountMember, AuthUser } from "@/types";
 
 export function fetchAccountUser(accountId: string, userId: string) {
