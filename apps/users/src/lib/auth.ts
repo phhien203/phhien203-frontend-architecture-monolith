@@ -1,4 +1,7 @@
-import type { PermissionKey, RoleKey } from "@/types";
+import type {
+  PermissionKey,
+  RoleKey,
+} from "@commerceos/shared/domain/commerce/users.types";
 
 export const ALL_PERMISSIONS: PermissionKey[] = [
   "dashboard.view",

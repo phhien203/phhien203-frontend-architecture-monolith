@@ -1,4 +1,5 @@
 import { ThemeToggle } from "@commerceos/shared/components/theme/theme-toggle";
+import { ROLE_LABELS } from "@commerceos/shared/permissions/permissions";
 import { Button } from "@commerceos/shared/ui/button";
 import { Select } from "@commerceos/shared/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@commerceos/shared/ui/sheet";
@@ -6,14 +7,13 @@ import { useRouterState } from "@tanstack/react-router";
 import { Command, Menu, Search } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { ROLE_LABELS } from "@/modules/users/lib/auth";
 
 import { CommandMenu } from "./command-menu";
 import { navItems } from "./nav-items";
 import { SidebarNav } from "./sidebar-nav";
 
 function getPageTitle(pathname: string) {
-  if (pathname === "/") return "Dashboard";
+	if (pathname === "/") return "Dashboard";
   const matched = navItems.find(
     (item) => item.to !== "/" && pathname.startsWith(item.to),
   );
@@ -25,13 +25,13 @@ interface AppShellProps {
 }
 
 export function AppShell({ children }: AppShellProps) {
-  const pathname = useRouterState({
+	const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
   const [commandMenuOpen, setCommandMenuOpen] = useState(false);
   const { session, switchAccount } = useAuth();
 
-  useEffect(() => {
+	useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
@@ -43,7 +43,7 @@ export function AppShell({ children }: AppShellProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  return (
+	return (
     <div className="h-screen overflow-hidden bg-background">
       <CommandMenu open={commandMenuOpen} onOpenChange={setCommandMenuOpen} />
       <div className="flex h-full">

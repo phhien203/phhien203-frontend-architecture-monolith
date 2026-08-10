@@ -1,5 +1,8 @@
 import { apiClient } from "@commerceos/shared/api/client";
-import type { AccountMember, AccountPermissionPolicy } from "@/types";
+import type {
+  AccountMember,
+  AccountPermissionPolicy,
+} from "@commerceos/shared/domain/commerce/users.types";
 
 export function fetchAccountUsers(accountId: string) {
   return apiClient.get<AccountMember[]>(`/api/accounts/${accountId}/users`);

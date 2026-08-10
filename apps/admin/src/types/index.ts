@@ -36,4 +36,4 @@ export type {
   PermissionKey,
   RoleKey,
   SessionMembership,
-} from "@/modules/users/domain/users.types";
+} from "@commerceos/shared/domain/commerce/users.types";

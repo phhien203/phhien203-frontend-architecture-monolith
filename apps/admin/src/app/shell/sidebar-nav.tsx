@@ -1,4 +1,5 @@
 import { cn } from "@commerceos/shared/lib/utils";
+import { ROLE_LABELS } from "@commerceos/shared/permissions/permissions";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,16 +12,15 @@ import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { CircleUserRound, EllipsisVertical, LogOut, Store } from "lucide-react";
 import { navItems } from "@/app/shell/nav-items";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { ROLE_LABELS } from "@/modules/users/lib/auth";
 
 export function SidebarNav() {
-  const pathname = useRouterState({
+	const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
   const navigate = useNavigate();
   const { session, hasPermission, logout } = useAuth();
 
-  return (
+	return (
     <div className="flex h-full flex-col">
       <div className="flex items-center gap-3 px-3 py-4">
         <div className="rounded-lg bg-primary/10 p-2 text-primary">
