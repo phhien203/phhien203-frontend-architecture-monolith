@@ -1,8 +1,7 @@
+import { ThemeProvider } from "@commerceos/shared/theme/theme-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { type PropsWithChildren, useState } from "react";
-
-import { ThemeProvider } from "@/app/providers/theme-provider";
 import { AuthProvider } from "@/modules/authentication/providers/auth-provider";
 
 export function AppProviders({ children }: PropsWithChildren) {

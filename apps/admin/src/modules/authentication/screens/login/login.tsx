@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@commerceos/shared/components/theme/theme-toggle";
 import { Button } from "@commerceos/shared/ui/button";
 import {
   Card,
@@ -9,7 +10,6 @@ import { Input } from "@commerceos/shared/ui/input";
 import { Label } from "@commerceos/shared/ui/label";
 import { Navigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { ThemeToggle } from "@/app/shell/theme-toggle";
 import { useAuth } from "../../providers/use-auth";
 
 const DEMO_PASSWORD = "demo123";

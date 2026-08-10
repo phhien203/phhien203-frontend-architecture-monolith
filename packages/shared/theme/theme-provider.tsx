@@ -5,7 +5,7 @@ import {
   type Theme,
   ThemeContext,
   type ThemeContextValue,
-} from "@/app/providers/theme-context";
+} from "./theme-context";
 
 const THEME_STORAGE_KEY = "commerceos-theme";
 
