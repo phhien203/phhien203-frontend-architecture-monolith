@@ -1,9 +1,8 @@
 import { apiClient } from "@commerceos/shared/api/client";
-import type { Customer, Order } from "@/types";
-
-export interface CustomerDetail extends Customer {
-  orderHistory: Order[];
-}
+import type {
+  Customer,
+  CustomerDetail,
+} from "@commerceos/shared/domain/commerce/customers.types";
 
 export function fetchCustomers() {
   return apiClient.get<Customer[]>("/api/customers");

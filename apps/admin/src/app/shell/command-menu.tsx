@@ -1,3 +1,4 @@
+import { fetchCustomers } from "@commerceos/shared/api/commerce/customers.api";
 import { fetchProducts } from "@commerceos/shared/api/commerce/products.api";
 import { cn, formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
 import { Button } from "@commerceos/shared/ui/button";
@@ -22,7 +23,6 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { fetchCustomers } from "@/modules/customers/api/customers.api";
 import { fetchOrders } from "@/modules/orders/api/orders.api";
 import { fetchAccountUsers } from "@/modules/users/api/accounts";
 import { ROLE_LABELS } from "@/modules/users/lib/auth";

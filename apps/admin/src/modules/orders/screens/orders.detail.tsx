@@ -1,4 +1,5 @@
 import { ActivityHistoryCard } from "@commerceos/shared/components/activity-history-card";
+import { OrderLineItemsTable } from "@commerceos/shared/components/order-line-items-table";
 import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
 import { KeyValueList } from "@commerceos/shared/components/key-value-list";
 import { PageHeader } from "@commerceos/shared/components/page-header";
@@ -9,7 +10,6 @@ import { Button } from "@commerceos/shared/ui/button";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { OrderLineItemsTable } from "@/modules/orders/components/order-line-items-table";
 import type { Order } from "@/types";
 
 import { fetchOrder, updateOrder } from "../api/orders.api";

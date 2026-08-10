@@ -2,6 +2,8 @@ import AnalyticsPage from "@commerceos/analytics/screens/analytics.index";
 import ProductDetailPage from "@commerceos/catalog/screens/catalog.detail";
 import CatalogPage from "@commerceos/catalog/screens/catalog.index";
 import NewProductPage from "@commerceos/catalog/screens/catalog.new";
+import CustomerDetailPage from "@commerceos/customers/screens/customers.detail";
+import CustomersIndexPage from "@commerceos/customers/screens/customers.index";
 import { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
@@ -10,8 +12,6 @@ import {
 } from "@tanstack/react-router";
 import { NotFoundComponent, RootComponent } from "@/app/router/root";
 import LoginPage from "@/modules/authentication/screens/login/login";
-import CustomerDetailPage from "@/modules/customers/screens/customers.detail";
-import CustomersIndexPage from "@/modules/customers/screens/customers.index";
 import DashboardIndexPage from "@/modules/dashboard/features/dashboard-overview/dashboard-overview";
 import DiscountsDetailPage from "@/modules/discounts/screens/discounts.detail";
 import DiscountsIndexPage from "@/modules/discounts/screens/discounts.index";
