@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 
 import { AppProviders } from "@/app/providers/AppProviders";
 import { router } from "@/app/router/router";
-import "@/styles/globals.css";
+import "@commerceos/shared/styles/globals.css";
 
 async function enableMocking() {
   if (import.meta.env.DEV) {

@@ -1,4 +1,13 @@
 {
   "name": "@commerceos/shared",
-  "private": true
+  "private": true,
+  "exports": {
+    "./api/*": "./api/*.ts",
+    "./components/*": "./components/*.tsx",
+    "./components/feedback/*": "./components/feedback/*.tsx",
+    "./domain/*": "./domain/*.ts",
+    "./lib/*": "./lib/*.ts",
+    "./styles/globals.css": "./styles/globals.css",
+    "./ui/*": "./ui/*.tsx"
+  }
 }
