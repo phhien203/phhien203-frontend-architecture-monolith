@@ -11,11 +11,8 @@
     "typecheck": "tsc --noEmit",
     "preview": "vite preview"
   },
-  "exports": {
-    "./authentication/providers/use-auth": "./src/modules/authentication/providers/use-auth.ts",
-    "./authentication/*": "./src/modules/authentication/*.tsx"
-  },
   "dependencies": {
+    "@commerceos/authentication": "*",
     "@commerceos/analytics": "*",
     "@commerceos/catalog": "*",
     "@commerceos/customers": "*",

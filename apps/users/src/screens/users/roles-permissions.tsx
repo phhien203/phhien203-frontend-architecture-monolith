@@ -11,7 +11,7 @@ import {
 import { Switch } from "@commerceos/shared/ui/switch";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { useAuth } from "commerceos-admin/authentication/providers/use-auth";
+import { useAuth } from "@commerceos/authentication/providers/use-auth";
 import { useEffect, useState } from "react";
 
 import {

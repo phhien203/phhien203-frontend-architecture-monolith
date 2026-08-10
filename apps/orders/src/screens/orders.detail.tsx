@@ -10,7 +10,7 @@ import { formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
 import { Button } from "@commerceos/shared/ui/button";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
-import { useAuth } from "commerceos-admin/authentication/providers/use-auth";
+import { useAuth } from "@commerceos/authentication/providers/use-auth";
 
 import { fetchOrder, updateOrder } from "../api/orders.api";
 

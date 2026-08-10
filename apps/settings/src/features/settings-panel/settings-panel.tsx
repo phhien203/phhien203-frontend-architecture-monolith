@@ -10,7 +10,7 @@ import { Button } from "@commerceos/shared/ui/button";
 import { Input } from "@commerceos/shared/ui/input";
 import { Label } from "@commerceos/shared/ui/label";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useAuth } from "commerceos-admin/authentication/providers/use-auth";
+import { useAuth } from "@commerceos/authentication/providers/use-auth";
 import { useEffect, useState } from "react";
 
 import {

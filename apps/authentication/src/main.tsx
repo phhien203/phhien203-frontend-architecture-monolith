@@ -1,16 +1,15 @@
-import DashboardPage from "@commerceos/dashboard/screens/dashboard.index";
 import { enableMocking } from "@commerceos/shared/mocks/browser";
 import { AppProviders } from "@commerceos/shared/providers/app-providers";
 import { createStandaloneRouter } from "@commerceos/shared/router/standalone";
 import { RouterProvider } from "@tanstack/react-router";
-import { AuthProvider } from "@commerceos/authentication/providers/auth-provider";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "@commerceos/shared/styles/globals.css";
+import { AuthProvider } from "./providers/auth-provider";
+import LoginPage from "./screens/login/login";
 
 const router = createStandaloneRouter([
-	{ path: "/", component: DashboardPage },
-	{ path: "/dashboard", component: DashboardPage },
+	{ path: "/login", component: LoginPage },
 ]);
 
 void enableMocking().then(() => {

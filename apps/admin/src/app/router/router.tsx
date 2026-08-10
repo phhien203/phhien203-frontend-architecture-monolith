@@ -23,7 +23,7 @@ import {
   createRouter,
 } from "@tanstack/react-router";
 import { NotFoundComponent, RootComponent } from "@/app/router/root";
-import LoginPage from "@/modules/authentication/screens/login/login";
+import LoginPage from "@commerceos/authentication/screens/login/login";
 
 export interface RouterContext {
   queryClient: QueryClient;

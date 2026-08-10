@@ -1,8 +1,8 @@
+import { useAuth } from "@commerceos/authentication/providers/use-auth";
 import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
 import { getViewPermissionForPath } from "@commerceos/shared/lib/user-permissions";
 import { Navigate, Outlet, useRouterState } from "@tanstack/react-router";
 import { AppShell } from "@/app/shell/app-shell";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
 
 export function RootComponent() {
   const pathname = useRouterState({

@@ -8,7 +8,7 @@ import { Select } from "@commerceos/shared/ui/select";
 import { Textarea } from "@commerceos/shared/ui/textarea";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useAuth } from "commerceos-admin/authentication/providers/use-auth";
+import { useAuth } from "@commerceos/authentication/providers/use-auth";
 import { useState } from "react";
 import { createProduct } from "../api/products.api";
 import { ProductImageField } from "../components/product-image-field";

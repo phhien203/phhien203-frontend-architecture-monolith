@@ -16,7 +16,7 @@ import {
 } from "@commerceos/shared/ui/table";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { useAuth } from "commerceos-admin/authentication/providers/use-auth";
+import { useAuth } from "@commerceos/authentication/providers/use-auth";
 import { useMemo } from "react";
 
 import { fetchAccountUsers, updateAccountUser } from "../../api/accounts";
