@@ -4,7 +4,6 @@ export type {
   CustomerDetail,
   CustomerSegment,
 } from "@commerceos/shared/domain/commerce/customers.types";
-export type { DashboardSummary } from "@/modules/dashboard/domain/dashboard.types";
 export type {
   Discount,
   DiscountRule,

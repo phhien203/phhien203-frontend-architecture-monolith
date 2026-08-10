@@ -42,7 +42,7 @@ import {
   YAxis,
 } from "recharts";
 
-import { fetchDashboardSummary } from "../../api/dashboard.api";
+import { fetchDashboardSummary } from "../api/dashboard.api";
 
 const SEGMENT_COLORS = [
   "hsl(217 91% 60%)",
