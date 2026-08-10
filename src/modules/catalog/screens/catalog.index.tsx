@@ -18,7 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { formatCurrency } from "@/lib/utils";
+import { formatCurrency } from "@/shared/lib/utils";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 
 import { fetchProducts } from "../api/products.api";

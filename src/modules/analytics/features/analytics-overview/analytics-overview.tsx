@@ -31,7 +31,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { formatCurrency, formatNumber } from "@/lib/utils";
+import { formatCurrency, formatNumber } from "@/shared/lib/utils";
 
 import { fetchAnalyticsOverview } from "../../api/analytics";
 import {

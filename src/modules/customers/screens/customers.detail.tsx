@@ -20,7 +20,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
-import { formatCurrency, formatDate } from "@/lib/utils";
+import { formatCurrency, formatDate } from "@/shared/lib/utils";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { Customer } from "@/types";
 

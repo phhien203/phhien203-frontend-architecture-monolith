@@ -20,7 +20,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { cn, formatCurrency, formatDate } from "@/lib/utils";
+import { cn, formatCurrency, formatDate } from "@/shared/lib/utils";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { fetchProducts } from "@/modules/catalog/api/products.api";
 import { fetchCustomers } from "@/modules/customers/api/customers.api";

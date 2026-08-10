@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 const themeOptions: Array<{ value: Theme; label: string; icon: typeof Sun }> = [
   { value: "light", label: "Light", icon: Sun },
