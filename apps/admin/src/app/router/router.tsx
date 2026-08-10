@@ -5,6 +5,9 @@ import NewProductPage from "@commerceos/catalog/screens/catalog.new";
 import CustomerDetailPage from "@commerceos/customers/screens/customers.detail";
 import CustomersIndexPage from "@commerceos/customers/screens/customers.index";
 import DashboardIndexPage from "@commerceos/dashboard/screens/dashboard.index";
+import DiscountsDetailPage from "@commerceos/discounts/screens/discounts.detail";
+import DiscountsIndexPage from "@commerceos/discounts/screens/discounts.index";
+import DiscountsNewPage from "@commerceos/discounts/screens/discounts.new";
 import { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
@@ -13,9 +16,6 @@ import {
 } from "@tanstack/react-router";
 import { NotFoundComponent, RootComponent } from "@/app/router/root";
 import LoginPage from "@/modules/authentication/screens/login/login";
-import DiscountsDetailPage from "@/modules/discounts/screens/discounts.detail";
-import DiscountsIndexPage from "@/modules/discounts/screens/discounts.index";
-import DiscountsNewPage from "@/modules/discounts/screens/discounts.new";
 import InventoryIndexPage from "@/modules/inventory/screens/inventory.index";
 import OrdersDetailPage from "@/modules/orders/screens/orders.detail";
 import OrdersIndexPage from "@/modules/orders/screens/orders.index";

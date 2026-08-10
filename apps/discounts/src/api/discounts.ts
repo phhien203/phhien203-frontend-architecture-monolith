@@ -1,5 +1,5 @@
 import { apiClient } from "@commerceos/shared/api/client";
-import type { Discount } from "@/types";
+import type { Discount } from "@commerceos/shared/domain/commerce/discounts.types";
 
 export function fetchDiscounts() {
   return apiClient.get<Discount[]>("/api/discounts");

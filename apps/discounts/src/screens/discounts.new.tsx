@@ -1,7 +1,7 @@
 import { PageHeader } from "@commerceos/shared/components/page-header";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { useAuth } from "commerceos-admin/authentication/providers/use-auth";
 
 import { createDiscount } from "../api/discounts";
 import {

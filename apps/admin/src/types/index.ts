@@ -8,7 +8,7 @@ export type {
   Discount,
   DiscountRule,
   DiscountType,
-} from "@/modules/discounts/domain/discounts.types";
+} from "@commerceos/shared/domain/commerce/discounts.types";
 export type {
   InventoryItem,
   InventoryStatus,

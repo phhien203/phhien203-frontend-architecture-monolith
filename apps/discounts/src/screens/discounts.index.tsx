@@ -14,7 +14,7 @@ import {
 } from "@commerceos/shared/ui/table";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { useAuth } from "commerceos-admin/authentication/providers/use-auth";
 
 import { fetchDiscounts } from "../api/discounts";
 
