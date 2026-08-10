@@ -12,7 +12,7 @@ export type {
 export type {
   InventoryItem,
   InventoryStatus,
-} from "@/modules/inventory/domain/inventory.types";
+} from "@commerceos/shared/domain/commerce/inventory.types";
 export type {
   Order,
   OrderExchange,

@@ -1,5 +1,5 @@
 import { apiClient } from "@commerceos/shared/api/client";
-import type { InventoryItem } from "@/types";
+import type { InventoryItem } from "@commerceos/shared/domain/commerce/inventory.types";
 
 export function fetchInventory() {
   return apiClient.get<InventoryItem[]>("/api/inventory");
