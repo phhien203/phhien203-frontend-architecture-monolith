@@ -7,10 +7,9 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=apps/app-shell",
-    "build": "tsc --noEmit && vite build",
-    "lint:deps": "depcruise --config .dependency-cruiser.cjs src",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "preview": "npm run preview --workspace=apps/app-shell"
   }
 }
