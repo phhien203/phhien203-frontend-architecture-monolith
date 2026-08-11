@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@commerceos/ui": "*",
     "@commerceos/authentication": "*",
     "@commerceos/analytics": "*",
     "@commerceos/catalog": "*",

@@ -12,12 +12,12 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@commerceos/shared/ui/card";
+} from "@commerceos/ui/card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@commerceos/shared/ui/chart";
+} from "@commerceos/ui/chart";
 import {
   Table,
   TableBody,
@@ -25,7 +25,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@commerceos/shared/ui/table";
+} from "@commerceos/ui/table";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { AlertTriangle, DollarSign, ShoppingCart, Users } from "lucide-react";

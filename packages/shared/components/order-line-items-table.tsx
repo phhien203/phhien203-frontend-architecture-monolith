@@ -7,7 +7,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@commerceos/shared/ui/table";
+} from "@commerceos/ui/table";
 import { Link } from "@tanstack/react-router";
 
 interface OrderLineItemsTableProps {

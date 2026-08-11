@@ -1,5 +1,5 @@
 import { readFileAsDataUrl, uploadImage } from "@commerceos/shared/api/uploads";
-import { Button } from "@commerceos/shared/ui/button";
+import { Button } from "@commerceos/ui/button";
 import { type ChangeEvent, useEffect, useState } from "react";
 
 interface ProductImageFieldProps {

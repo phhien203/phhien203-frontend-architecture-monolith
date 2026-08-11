@@ -1,9 +1,10 @@
+import { useAuth } from "@commerceos/authentication/providers/use-auth";
 import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
 import { PageHeader } from "@commerceos/shared/components/page-header";
 import { SectionCard } from "@commerceos/shared/components/section-card";
 import { StatusBadge } from "@commerceos/shared/components/status-badge";
 import { formatDate } from "@commerceos/shared/lib/utils";
-import { Button } from "@commerceos/shared/ui/button";
+import { Button } from "@commerceos/ui/button";
 import {
   Table,
   TableBody,
@@ -11,10 +12,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@commerceos/shared/ui/table";
+} from "@commerceos/ui/table";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { useAuth } from "@commerceos/authentication/providers/use-auth";
 
 import { fetchDiscounts } from "../api/discounts";
 

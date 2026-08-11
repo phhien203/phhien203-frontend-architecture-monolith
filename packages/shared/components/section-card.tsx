@@ -1,12 +1,12 @@
-import type { ReactNode } from "react";
-import { cn } from "../lib/utils";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card";
+} from "@commerceos/ui/card";
+import type { ReactNode } from "react";
+import { cn } from "../lib/utils";
 
 interface SectionCardProps {
   id?: string;
@@ -32,15 +32,27 @@ export function SectionCard({
   return (
     <Card id={id} className={className}>
       {hasHeader ? (
-        <CardHeader className={actions ? "flex flex-row items-start justify-between gap-4 space-y-0" : undefined}>
+        <CardHeader
+          className={
+            actions
+              ? "flex flex-row items-start justify-between gap-4 space-y-0"
+              : undefined
+          }
+        >
           <div className="space-y-1">
             {title ? <CardTitle>{title}</CardTitle> : null}
-            {description ? <CardDescription>{description}</CardDescription> : null}
+            {description ? (
+              <CardDescription>{description}</CardDescription>
+            ) : null}
           </div>
-          {actions ? <div className="flex shrink-0 items-center gap-2">{actions}</div> : null}
+          {actions ? (
+            <div className="flex shrink-0 items-center gap-2">{actions}</div>
+          ) : null}
         </CardHeader>
       ) : null}
-      <CardContent className={cn(!hasHeader && "pt-6", contentClassName)}>{children}</CardContent>
+      <CardContent className={cn(!hasHeader && "pt-6", contentClassName)}>
+        {children}
+      </CardContent>
     </Card>
   );
 }

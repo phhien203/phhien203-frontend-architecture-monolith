@@ -4,7 +4,7 @@ import { PageHeader } from "@commerceos/shared/components/page-header";
 import { SectionCard } from "@commerceos/shared/components/section-card";
 import { StatusBadge } from "@commerceos/shared/components/status-badge";
 import { formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
-import { Select } from "@commerceos/shared/ui/select";
+import { Select } from "@commerceos/ui/select";
 import {
   Table,
   TableBody,
@@ -12,7 +12,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@commerceos/shared/ui/table";
+} from "@commerceos/ui/table";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";

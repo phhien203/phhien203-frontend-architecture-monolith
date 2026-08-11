@@ -1,13 +1,13 @@
 import { ThemeToggle } from "@commerceos/shared/components/theme/theme-toggle";
-import { Button } from "@commerceos/shared/ui/button";
+import { Button } from "@commerceos/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@commerceos/shared/ui/card";
-import { Input } from "@commerceos/shared/ui/input";
-import { Label } from "@commerceos/shared/ui/label";
+} from "@commerceos/ui/card";
+import { Input } from "@commerceos/ui/input";
+import { Label } from "@commerceos/ui/label";
 import { Navigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useAuth } from "../../providers/use-auth";

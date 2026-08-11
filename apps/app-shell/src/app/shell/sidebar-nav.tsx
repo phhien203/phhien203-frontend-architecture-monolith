@@ -8,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@commerceos/shared/ui/dropdown-menu";
+} from "@commerceos/ui/dropdown-menu";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { CircleUserRound, EllipsisVertical, LogOut, Store } from "lucide-react";
 import { navItems } from "@/app/shell/nav-items";

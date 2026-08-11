@@ -1,11 +1,11 @@
 import { cn } from "@commerceos/shared/lib/utils";
-import { Button } from "@commerceos/shared/ui/button";
+import { Button } from "@commerceos/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@commerceos/shared/ui/dropdown-menu";
+} from "@commerceos/ui/dropdown-menu";
 import { Check, Monitor, Moon, Sun } from "lucide-react";
 import type { Theme } from "../../theme/theme-context";
 import { useTheme } from "../../theme/use-theme";

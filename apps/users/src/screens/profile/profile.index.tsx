@@ -2,9 +2,9 @@ import { LoadingState } from "@commerceos/shared/components/feedback/loading-sta
 import { PageHeader } from "@commerceos/shared/components/page-header";
 import { SectionCard } from "@commerceos/shared/components/section-card";
 import type { AuthUser } from "@commerceos/shared/domain/commerce/users.types";
-import { Button } from "@commerceos/shared/ui/button";
-import { Input } from "@commerceos/shared/ui/input";
-import { Label } from "@commerceos/shared/ui/label";
+import { Button } from "@commerceos/ui/button";
+import { Input } from "@commerceos/ui/input";
+import { Label } from "@commerceos/ui/label";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { fetchProfile, updateProfile } from "../../api/users";

@@ -1,5 +1,5 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@commerceos/ui/card";
 import type { ReactNode } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 interface StatCardProps {
   title: string;

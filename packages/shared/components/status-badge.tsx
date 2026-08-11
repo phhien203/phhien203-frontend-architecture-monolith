@@ -1,4 +1,4 @@
-import { Badge } from "../ui/badge";
+import { Badge } from "@commerceos/ui/badge";
 
 type Tone = "default" | "success" | "warning" | "danger" | "info";
 

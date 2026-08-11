@@ -5,10 +5,10 @@ import { SectionCard } from "@commerceos/shared/components/section-card";
 import { StatusBadge } from "@commerceos/shared/components/status-badge";
 import type { Customer } from "@commerceos/shared/domain/commerce/customers.types";
 import { formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
-import { Button } from "@commerceos/shared/ui/button";
-import { Input } from "@commerceos/shared/ui/input";
-import { Label } from "@commerceos/shared/ui/label";
-import { Select } from "@commerceos/shared/ui/select";
+import { Button } from "@commerceos/ui/button";
+import { Input } from "@commerceos/ui/input";
+import { Label } from "@commerceos/ui/label";
+import { Select } from "@commerceos/ui/select";
 import {
   Table,
   TableBody,
@@ -16,8 +16,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@commerceos/shared/ui/table";
-import { Textarea } from "@commerceos/shared/ui/textarea";
+} from "@commerceos/ui/table";
+import { Textarea } from "@commerceos/ui/textarea";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useEffect, useState } from "react";

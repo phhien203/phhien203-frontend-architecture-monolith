@@ -8,12 +8,12 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@commerceos/shared/ui/card";
+} from "@commerceos/ui/card";
 import {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@commerceos/shared/ui/chart";
+} from "@commerceos/ui/chart";
 import { useQuery } from "@tanstack/react-query";
 import {
 	Bar,
