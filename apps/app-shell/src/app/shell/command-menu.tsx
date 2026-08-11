@@ -3,11 +3,12 @@ import { fetchCustomers } from "@commerceos/shared/api/commerce/customers.api";
 import { fetchOrders } from "@commerceos/shared/api/commerce/orders.api";
 import { fetchProducts } from "@commerceos/shared/api/commerce/products.api";
 import { fetchAccountUsers } from "@commerceos/shared/api/commerce/users.api";
-import { cn, formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
+import { formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
 import { ROLE_LABELS } from "@commerceos/shared/permissions/permissions";
 import { Button } from "@commerceos/ui/button";
 import { Dialog, DialogContent } from "@commerceos/ui/dialog";
 import { Input } from "@commerceos/ui/input";
+import { cn } from "@commerceos/ui/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
@@ -87,13 +88,13 @@ function matchesQuery(
 }
 
 export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
   const { session, hasPermission, switchAccount } = useAuth();
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const { data: products = [] } = useQuery({
+	const { data: products = [] } = useQuery({
     queryKey: ["products"],
     queryFn: fetchProducts,
     enabled: open && hasPermission("catalog.view"),
@@ -121,7 +122,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
     staleTime: 60_000,
   });
 
-  useEffect(() => {
+	useEffect(() => {
     if (!open) {
       setQuery("");
       setActiveIndex(0);
@@ -132,7 +133,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
     return () => window.cancelAnimationFrame(frame);
   }, [open]);
 
-  const items = useMemo(() => {
+	const items = useMemo(() => {
     const navigateAndClose = async (callback: () => Promise<unknown>) => {
       onOpenChange(false);
       await callback();
@@ -396,7 +397,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
     switchAccount,
   ]);
 
-  useEffect(() => {
+	useEffect(() => {
     if (!items.length) {
       setActiveIndex(0);
       return;
@@ -404,7 +405,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
     setActiveIndex((current) => Math.min(current, items.length - 1));
   }, [items]);
 
-  const groupedItems = useMemo(() => {
+	const groupedItems = useMemo(() => {
     const groups = new Map<string, CommandItem[]>();
     for (const item of items) {
       const currentGroup = groups.get(item.section) ?? [];
@@ -414,11 +415,11 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
     return [...groups.entries()];
   }, [items]);
 
-  const handleSelect = async (item: CommandItem) => {
+	const handleSelect = async (item: CommandItem) => {
     await item.run();
   };
 
-  return (
+	return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="overflow-hidden p-0 sm:max-w-2xl">
         <div className="border-b px-4 py-4">

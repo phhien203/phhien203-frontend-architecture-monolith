@@ -5,8 +5,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@commerceos/ui/card";
+import { cn } from "@commerceos/ui/lib/utils";
 import type { ReactNode } from "react";
-import { cn } from "../lib/utils";
 
 interface SectionCardProps {
   id?: string;

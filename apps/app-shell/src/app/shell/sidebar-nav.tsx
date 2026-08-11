@@ -1,5 +1,4 @@
 import { useAuth } from "@commerceos/authentication/providers/use-auth";
-import { cn } from "@commerceos/shared/lib/utils";
 import { ROLE_LABELS } from "@commerceos/shared/permissions/permissions";
 import {
   DropdownMenu,
@@ -9,6 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@commerceos/ui/dropdown-menu";
+import { cn } from "@commerceos/ui/lib/utils";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { CircleUserRound, EllipsisVertical, LogOut, Store } from "lucide-react";
 import { navItems } from "@/app/shell/nav-items";
