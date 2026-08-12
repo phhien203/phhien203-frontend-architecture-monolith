@@ -15,5 +15,14 @@
       "persistent": true,
       "cache": false
     }
+  },
+  "boundaries": {
+    "tags": {
+      "platform": {
+        "dependencies": {
+          "deny": ["modules"]
+        }
+      }
+    }
   }
 }
